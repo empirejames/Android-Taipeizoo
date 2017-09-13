@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="請選擇動物園區">
+        <menu>
+            <item
+                android:id="@+id/nav_penguin"
+                android:icon="@drawable/ic_menu_send"
+                android:title="企鵝館" />
+            <item
+                android:id="@+id/nav_bird"
+                android:icon="@drawable/ic_menu_send"
+                android:title="鳥園區" />
+            <item
+                android:id="@+id/nav_NoBear"
+                android:icon="@drawable/ic_menu_send"
+                android:title="無尾熊館" />
+            <item
+                android:id="@+id/nav_panda"
+                android:icon="@drawable/ic_menu_send"
+                android:title="大貓熊館" />
+            <item
+                android:id="@+id/nav_childAnmals"
+                android:icon="@drawable/ic_menu_send"
+                android:title="兒童動物區" />
+            <item
+                android:id="@+id/nav_desert"
+                android:icon="@drawable/ic_menu_send"
+                android:title="沙漠動物區" />
+            <item
+                android:id="@+id/nav_warmAnimals"
+                android:icon="@drawable/ic_menu_send"
+                android:title="溫帶動物區" />
+            <item
+                android:id="@+id/nav_australia"
+                android:icon="@drawable/ic_menu_send"
+                android:title="澳洲動物區" />
+            <item
+                android:id="@+id/nav_afreca"
+                android:icon="@drawable/ic_menu_send"
+                android:title="非洲動物區" />
+            <item
+                android:id="@+id/nav_TaiwanAnimals"
+                android:icon="@drawable/ic_menu_send"
+                android:title="台灣動物區" />
+            <item
+                android:id="@+id/nav_Asia"
+                android:icon="@drawable/ic_menu_send"
+                android:title="亞洲熱帶雨林區" />
+            <item
+                android:id="@+id/nav_insect"
+                android:icon="@drawable/ic_menu_send"
+                android:title="兩棲爬蟲動物館" />
+        </menu>
+    </item>
+
+</menu>
