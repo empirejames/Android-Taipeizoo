@@ -2,6 +2,7 @@ package com.james.zoo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -72,13 +73,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 animals = mGridData.get(position);
+                Intent i = new Intent(MainActivity.this, AnimalsDetail.class);
+                startActivity(i);
                 overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
                 //Toast.makeText(AnimalActivity.this, animals.getTid()+" . " + animals.getWebId(), Toast.LENGTH_SHORT).show();
             }
         });
         //startDialog();
         //new AsyncHttpTask().execute(Zoo_URL);
-        drawer.openDrawer(R.id.drawer_layout);
+        //drawer.openDrawer(R.id.drawer_layout);
     }
 
     @Override

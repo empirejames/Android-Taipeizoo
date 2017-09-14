@@ -3,4 +3,6 @@
     <color name="colorPrimary">#436A3E</color>
     <color name="colorPrimaryDark">#274029</color>
     <color name="colorAccent">#AFB861</color>
+    <color name="mtransport">#00000000</color>
+    <color name="titllebar_back_on">#45d05e</color>
 </resources>
