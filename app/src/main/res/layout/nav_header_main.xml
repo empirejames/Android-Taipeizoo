@@ -14,7 +14,7 @@
     android:weightSum="1">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogo"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         app:srcCompat="@drawable/logo_image" />
@@ -32,6 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="http://www.zoo.gov.taipei/" />
+        android:text="www.zoo.gov.taipei/" />
 
 </LinearLayout>

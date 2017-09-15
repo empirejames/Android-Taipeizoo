@@ -22,6 +22,9 @@
         <activity android:name=".AnimalsDetail"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
+        <activity android:name=".FragmentAbout"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

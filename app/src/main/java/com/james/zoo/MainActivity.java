@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -39,7 +40,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String TAG = MainActivity.class.getSimpleName();
     private ArrayList<Animals> mGridData;
-    private ArrayList<String> mDetailData;
     private Animals animals;
     private GridView mGridView;
     private ImageAdapterGridView mGridAdapter;
@@ -60,14 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -119,20 +111,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent(getApplicationContext(), FragmentAbout.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
             return true;
         }
 
@@ -236,12 +225,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String A_Voice03_ALT = jsonObject.getString("A_Voice03_ALT");
                     String A_Voice03_URL = jsonObject.getString("A_Voice03_URL");
                     String A_Vedio_URL = jsonObject.getString("A_Vedio_URL");
-                    //Log.e(TAG, " A_Interpretation : " + A_Interpretation);
                     mGridData.add(new Animals(A_Name_Ch, A_Location, A_Geo, A_Phylum, A_Class, A_Order, A_Family, A_Distribution
                             , A_Habitat, A_Feature, A_Diet, A_Interpretation, A_Pic01_ALT, A_Pic01_URL, A_Pic02_ALT, A_Pic02_URL, A_Pic03_ALT, A_Pic03_URL
                             , A_Pic04_ALT, A_Pic04_URL, A_Voice01_ALT, A_Voice01_URl, A_Voice02_ALT, A_Voice02_URL, A_Voice03_ALT, A_Voice03_URL, A_Vedio_URL));
                 }
-                //Log.e(TAG, " name : " + name);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -265,6 +252,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         }).start();
+    }
+    private void openWebView(String url, String name) {
+        Intent intentWV = new Intent(MainActivity.this, WebViewActivity.class);
+        intentWV.putExtra("URL", url);
+        startActivity(intentWV);
+        overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
     }
 
     public void exitDialog(){

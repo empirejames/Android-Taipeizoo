@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "453710249483",
+    "firebase_url": "https://zoofirebaseproject-d0760.firebaseio.com",
+    "project_id": "zoofirebaseproject-d0760",
+    "storage_bucket": "zoofirebaseproject-d0760.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453710249483:android:ee5aaa89b37adda2",
+        "android_client_info": {
+          "package_name": "com.james.zoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453710249483-e15bmk6k3qefi7acsu8ld567d4bqicft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.james.zoo",
+            "certificate_hash": "9f6c903245c1c5e5f953596193e4661bbc545c36"
+          }
+        },
+        {
+          "client_id": "453710249483-j9hk88s8s1tbojbh3m571d9ga42vc62f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdJZXV8hmsyJDU5_kF82-AQ7MTwOiCn_A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453710249483-j9hk88s8s1tbojbh3m571d9ga42vc62f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
