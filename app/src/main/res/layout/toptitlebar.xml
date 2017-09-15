@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:text="某某館"
         android:textColor="#ffffff"
-        android:textSize="16sp"/>
+        android:textSize="20dp"/>
 
 </RelativeLayout>

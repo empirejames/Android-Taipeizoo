@@ -2,14 +2,17 @@ package com.james.zoo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -42,12 +45,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageAdapterGridView mGridAdapter;
     protected ProgressDialog dialogSMS;
     private Bundle bundle = new Bundle();
+    TinyDB tinydb;
+    String alreadyGj;
     private String Zoo_URL = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tinydb = new TinyDB(MainActivity.this);
+        alreadyGj = tinydb.getString("GJ");
+        if(alreadyGj.equals("")){
+            alreadyGj="true";
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -74,10 +84,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 animals = mGridData.get(position);
+                bundle.putString("Location", animals.getLocation());
+                bundle.putString("Geo", animals.getGeo());
+                bundle.putString("Video", animals.getVideo());
                 bundle.putString("imgURL", animals.getPic1_URL());
                 bundle.putString("NameCh", animals.getName_Ch());
-                bundle.putString("Class", animals.getPhylum() + " " + animals.getClasses()
-                        + " " + animals.getOrder() + " " + animals.getFamily());
+                bundle.putString("Class", animals.getPhylum() + " / " + animals.getClasses()
+                        + " / " + animals.getOrder() + " / " + animals.getFamily());
                 bundle.putString("Distribution", animals.getDistribution());
                 bundle.putString("Habitat", animals.getHabitat());
                 bundle.putString("Feature", animals.getFeature());
@@ -100,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            exitDialog();
         }
     }
 
@@ -252,5 +265,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         }).start();
+    }
+
+    public void exitDialog(){
+        if(alreadyGj.toString().equals("true")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("◎ 給個 5 星好評\n◎ 一同愛護動物\n◎ 可回饋問題讓我們知道")
+                    .setTitle("感恩您的使用")
+                    .setCancelable(false)
+                    .setPositiveButton("讚", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.animalshome"));
+                            startActivity(intentDL);
+                        }
+                    })
+                    .setNegativeButton("已經讚囉", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.this.finish();
+                        }
+                    })
+                    .setNeutralButton("不再提示", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            tinydb.putString("GJ", "false");
+                            MainActivity.this.finish();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }else{
+            MainActivity.this.finish();
+        }
     }
 }

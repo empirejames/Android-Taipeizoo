@@ -37,6 +37,7 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/zooMap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -58,10 +59,11 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/voiceZoo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="叫聲"
+                    android:text="影片"
                     android:textColor="#ffffff"
                     android:textSize="20sp" />
             </RelativeLayout>
