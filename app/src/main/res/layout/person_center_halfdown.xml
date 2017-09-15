@@ -1,127 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
 
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+    <RelativeLayout
+        android:id="@+id/pricingSection"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Item01"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/woof"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text=" 名字 "
+                android:background="@drawable/rule_background"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+
+                android:text="國王企鵝"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/classes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:text=" 類別 "
+                android:background="@drawable/rule_background"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_classes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classes"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="脊索動物門 鳥綱 企鵝目 企鵝科"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/distribution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_classes"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:text=" 分佈 "
+                android:background="@drawable/rule_background"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_distribution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/distribution"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/habitat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_distribution"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:text=" 棲地形態 "
+                android:background="@drawable/rule_background"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_habitat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/habitat"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="花許多時間在繁殖區的附近。在南緯60度以南的地區從未聞有繁殖記錄。在沒有雪及冰覆蓋的平坦海濱繁殖，有時繁殖區會長有草，通常離水不遠。"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/feature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_habitat"
+                android:layout_marginTop="15dp"
+                android:text=" 形態特徵 "
+                android:background="@drawable/rule_background"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_feature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/feature"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="體長94-95公分，體重9-15公斤。與皇帝企鵝相較，嘴相對較長，耳斑有不同的色調及形狀。幼鳥有較淺的黃色耳斑及較暗的下顎板。亞種間的不同在嘴及翅膀的長度。"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/diet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_feature"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:text=" 生態習性 "
+                android:background="@drawable/rule_background"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_diet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/diet"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="主要以魚維生，特別喜歡吃小型的Myctophidae科魚類(Electrona carlesvergi, Krefftichtys anderssoni)，也會吃頭足類(cephalopods)如Moroteuthis。抓獵物的方式靠潛水追補魚，游速可達12km/h。抓頭足類的成功率有10%。通常潛水抓魚的深度不會超過50公尺深，但有時可潛水至海底240公尺深。可能白天及晚上都會抓魚，白天的潛水較深。"
+                android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/btnReturn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/btn_shape_sqare"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textSize="20dp"
+                android:text="繼續查詢" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

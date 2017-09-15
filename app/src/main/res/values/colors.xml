@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#274029</color>
     <color name="colorAccent">#AFB861</color>
     <color name="mtransport">#00000000</color>
+    <color name="white">#F9F1E9</color>
+    <color name="gray">#717172</color>
     <color name="titllebar_back_on">#45d05e</color>
 </resources>

@@ -15,6 +15,8 @@ public class Animals {
     String Family;
     String Distribution;
     String Habitat;
+    String Feature;
+    String Diet;
     String Interpretation;
     String Pic1_ALT, Pic1_URL;
     String Pic2_ALT,Pic2_URL;
@@ -25,7 +27,7 @@ public class Animals {
     String Voice3_ALT, Voice3_URL;
     String Video;
     public Animals(String Name_Ch,String Location, String Geo , String Phylum, String Classes, String Order
-            , String Family, String Distribution, String Habitat, String Interpretation
+            , String Family, String Distribution, String Habitat, String Feature, String Diet, String Interpretation
             , String Pic1_ALT, String Pic1_URL, String Pic2_ALT, String Pic2_URL, String Pic3_ALT
             , String Pic3_URL, String Pic4_ALT, String Pic4_URL, String Voice1_ALT, String Voice1_URL
             , String Voice2_ALT, String Voice2_URL, String Voice3_ALT, String Voice3_URL, String Video) {
@@ -37,6 +39,8 @@ public class Animals {
         this.Order = Order;
         this.Family = Family;
         this.Distribution = Distribution;
+        this.Feature = Feature;
+        this.Diet = Diet;
         this.Habitat = Habitat;
         this.Interpretation = Interpretation;
         this.Pic1_ALT = Pic1_ALT;
@@ -83,6 +87,12 @@ public class Animals {
     }
     public String getHabitat() {
         return Habitat;
+    }
+    public String getFeature() {
+        return Feature;
+    }
+    public String getDiet() {
+        return Diet;
     }
     public String getInterpretation() {
         return Interpretation;

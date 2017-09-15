@@ -36,11 +36,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String TAG = MainActivity.class.getSimpleName();
     private ArrayList<Animals> mGridData;
+    private ArrayList<String> mDetailData;
     private Animals animals;
     private GridView mGridView;
     private ImageAdapterGridView mGridAdapter;
     protected ProgressDialog dialogSMS;
-
+    private Bundle bundle = new Bundle();
     private String Zoo_URL = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613";
 
     @Override
@@ -73,14 +74,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 animals = mGridData.get(position);
+                bundle.putString("imgURL", animals.getPic1_URL());
+                bundle.putString("NameCh", animals.getName_Ch());
+                bundle.putString("Class", animals.getPhylum() + " " + animals.getClasses()
+                        + " " + animals.getOrder() + " " + animals.getFamily());
+                bundle.putString("Distribution", animals.getDistribution());
+                bundle.putString("Habitat", animals.getHabitat());
+                bundle.putString("Feature", animals.getFeature());
+                bundle.putString("Diet", animals.getDiet());
                 Intent i = new Intent(MainActivity.this, AnimalsDetail.class);
+                i.putExtras(bundle);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
                 //Toast.makeText(AnimalActivity.this, animals.getTid()+" . " + animals.getWebId(), Toast.LENGTH_SHORT).show();
             }
         });
-        //startDialog();
-        //new AsyncHttpTask().execute(Zoo_URL);
+        startDialog();
+        new AsyncHttpTask().execute(Zoo_URL + "&q=企鵝館");
         //drawer.openDrawer(R.id.drawer_layout);
     }
 
@@ -195,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String A_Family = jsonObject.getString("A_Family");
                     String A_Distribution = jsonObject.getString("A_Distribution");
                     String A_Habitat = jsonObject.getString("A_Habitat");
+                    String A_Feature = jsonObject.getString("A_Feature");
+                    String A_Diet = jsonObject.getString("A_Diet");
                     String A_Interpretation = jsonObject.getString("A_Interpretation");
                     String A_Pic01_ALT = jsonObject.getString("A_Pic01_ALT");
                     String A_Pic01_URL = jsonObject.getString("A_Pic01_URL");
@@ -213,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String A_Vedio_URL = jsonObject.getString("A_Vedio_URL");
                     //Log.e(TAG, " A_Interpretation : " + A_Interpretation);
                     mGridData.add(new Animals(A_Name_Ch, A_Location, A_Geo, A_Phylum, A_Class, A_Order, A_Family, A_Distribution
-                            , A_Habitat, A_Interpretation, A_Pic01_ALT, A_Pic01_URL, A_Pic02_ALT, A_Pic02_URL, A_Pic03_ALT, A_Pic03_URL
+                            , A_Habitat, A_Feature, A_Diet, A_Interpretation, A_Pic01_ALT, A_Pic01_URL, A_Pic02_ALT, A_Pic02_URL, A_Pic03_ALT, A_Pic03_URL
                             , A_Pic04_ALT, A_Pic04_URL, A_Voice01_ALT, A_Voice01_URl, A_Voice02_ALT, A_Voice02_URL, A_Voice03_ALT, A_Voice03_URL, A_Vedio_URL));
                 }
                 //Log.e(TAG, " name : " + name);

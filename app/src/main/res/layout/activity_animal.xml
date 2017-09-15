@@ -16,8 +16,11 @@
             android:gravity="center_horizontal">
             <include
                 layout="@layout/person_center_halftop"/>
+
             <include
-                layout="@layout/person_center_halfdown"/>
+                layout="@layout/person_center_halfdown"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </com.james.zoo.PullToZoomScrollView>
 </LinearLayout>
