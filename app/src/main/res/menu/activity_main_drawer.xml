@@ -4,51 +4,51 @@
         <menu>
             <item
                 android:id="@+id/nav_penguin"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/pangu"
                 android:title="企鵝館" />
             <item
                 android:id="@+id/nav_bird"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/bird"
                 android:title="鳥園區" />
             <item
                 android:id="@+id/nav_NoBear"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/notail"
                 android:title="無尾熊館" />
             <item
                 android:id="@+id/nav_panda"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/catbear"
                 android:title="大貓熊館" />
             <item
                 android:id="@+id/nav_childAnmals"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/rabit"
                 android:title="兒童動物區" />
             <item
                 android:id="@+id/nav_desert"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/samo"
                 android:title="沙漠動物區" />
             <item
                 android:id="@+id/nav_warmAnimals"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/warm"
                 android:title="溫帶動物區" />
             <item
                 android:id="@+id/nav_australia"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ouchu"
                 android:title="澳洲動物區" />
             <item
                 android:id="@+id/nav_afreca"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/fachu"
                 android:title="非洲動物區" />
             <item
                 android:id="@+id/nav_TaiwanAnimals"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/taiwan"
                 android:title="台灣動物區" />
             <item
                 android:id="@+id/nav_Asia"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/hot"
                 android:title="亞洲熱帶雨林區" />
             <item
                 android:id="@+id/nav_insect"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/lungci"
                 android:title="兩棲爬蟲動物館" />
         </menu>
     </item>
