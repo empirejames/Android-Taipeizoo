@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="10dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/infoSection"
@@ -25,7 +24,6 @@
                 android:id="@+id/imageView_pic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:scaleType="centerCrop"
                 android:layout_weight="2" />
 
@@ -34,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:weightSum="3"
+                android:weightSum="4"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/tv_item"
@@ -57,6 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:text="距離 13.5 KM"
                     android:textSize="15sp" />
 
@@ -69,9 +68,6 @@
                     android:layout_weight="1"
                     android:text="大門廣場遊客服務中心提供遊客諮詢服務、播音服務、護理服務、哺集乳室、熱水供應服務、娃娃車租用及輪椅借用等多項服務。" />
             </LinearLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
 </RelativeLayout>

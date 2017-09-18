@@ -77,11 +77,12 @@ public class EquipmentAdapter extends BaseAdapter {
             holder.distance.setText(items.getS_geo());
             holder.summary = (TextView) row.findViewById(R.id.tv_summary);
             holder.summary.setText(items.getS_summary());
-            Log.e(TAG, "Path : " +  items.getS_pic_URL().toString());
             if(!items.getS_pic_URL().toString().equals("")){
                 Picasso.with(mContext)
                         .load(items.getS_pic_URL().toString())
                         .into(holder.imageView);
+            }else{
+                holder.imageView.setImageResource(R.drawable.ic_error_outline_white_24dp);
             }
         }
         return row;
