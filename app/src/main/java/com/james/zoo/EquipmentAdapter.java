@@ -75,6 +75,13 @@ public class EquipmentAdapter extends BaseAdapter {
             holder.location.setText(items.getS_location());
             holder.distance = (TextView) row.findViewById(R.id.tv_distance);
             holder.distance.setText(items.getS_geo());
+            holder.unit = (TextView) row.findViewById(R.id.tv_unit);
+            if(items.getKiller().contains("里")){
+                holder.unit.setText("公里");
+            }else{
+                holder.unit.setText("公尺");
+            }
+
             holder.summary = (TextView) row.findViewById(R.id.tv_summary);
             holder.summary.setText(items.getS_summary());
             if(!items.getS_pic_URL().toString().equals("")){
@@ -89,7 +96,7 @@ public class EquipmentAdapter extends BaseAdapter {
     }
     static class ViewHolder {
         ImageView imageView;
-        TextView item, location, distance, summary;
+        TextView item, location, distance, summary, unit;
     }
 
 }

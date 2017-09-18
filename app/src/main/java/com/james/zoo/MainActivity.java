@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         protected void onPostExecute(Integer result) {
             if (types != null) {
                 listView.setAdapter(mEquipmentAdapter);
+
                 mGridView.setVisibility(View.GONE);
             }else{
                 mGridAdapter.setGridData(mGridData);
@@ -322,8 +323,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String S_Geo = jsonObject.getString("S_Geo");
                     String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
                     String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]),longitude,latitude));
-                    mEquipData.add(new EquipmentItem(S_Title,S_Summary,S_Location,distanceFin,S_Pic01_URL));
-
+                    String [] distanceKil = distanceFin.split("公");
+                    Log.e(TAG,distanceKil[0] + " .. " + distanceKil[1] + "");
+                    mEquipData.add(new EquipmentItem(S_Title,S_Summary,S_Location,distanceKil[0],distanceKil[1],S_Pic01_URL));
                 }
             }
         } catch (IOException e) {
