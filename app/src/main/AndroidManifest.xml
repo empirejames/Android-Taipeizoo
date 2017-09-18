@@ -3,6 +3,7 @@
     package="com.james.zoo">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +24,9 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity android:name=".FragmentAbout"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".GenderActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -26,6 +28,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -35,26 +38,34 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String TAG = MainActivity.class.getSimpleName();
     private ArrayList<Animals> mGridData;
+    private ArrayList<EquipmentItem> mEquipData;
+    private EquipmentItem equItem;
     private Animals animals;
     private GridView mGridView;
+    private ListView listView;
     private ImageAdapterGridView mGridAdapter;
+    private EquipmentAdapter mEquipmentAdapter;
     protected ProgressDialog dialogSMS;
     private Bundle bundle = new Bundle();
+    private String types;
     TinyDB tinydb;
     String alreadyGj;
     private String Zoo_URL = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613";
-
+    private String equit_URL ="http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=5048d475-7642-43ee-ac6f-af0a368d63bf";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tinydb = new TinyDB(MainActivity.this);
         alreadyGj = tinydb.getString("GJ");
+        types = getActivityValue();
+        Log.e(TAG,"Types ... " + types);
         if(alreadyGj.equals("")){
             alreadyGj="true";
         }
@@ -68,9 +79,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        listView = (ListView) findViewById(R.id.lv_data);
         mGridView = (GridView) findViewById(R.id.gridview);
         mGridData = new ArrayList<>();
+        mEquipData = new ArrayList<>();
         mGridAdapter = new ImageAdapterGridView(this, R.layout.grid_item, mGridData);
+        mEquipmentAdapter = new EquipmentAdapter(this,R.layout.activity_equiment_layout,mEquipData);
+
         mGridView.setAdapter(mGridAdapter);
         mGridView.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
@@ -94,8 +109,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Toast.makeText(AnimalActivity.this, animals.getTid()+" . " + animals.getWebId(), Toast.LENGTH_SHORT).show();
             }
         });
-        startDialog();
-        new AsyncHttpTask().execute(Zoo_URL + "&q=企鵝館");
+        if(types ==null){
+            startDialog();
+            new AsyncHttpTask().execute(Zoo_URL + "&q=企鵝館");
+        }else{
+            startDialog();
+            Log.e(TAG, "ELSE : " + equit_URL + "&q=" + types);
+            new AsyncHttpTask().execute(equit_URL + "&q=" + types);
+        }
         //drawer.openDrawer(R.id.drawer_layout);
     }
 
@@ -123,6 +144,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
             return true;
+        }else if(id == R.id.action_services){
+            Intent i = new Intent(getApplicationContext(), GenderActivity.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -135,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         mGridAdapter.clear();
         startDialog();
+        types = null;
         if (id == R.id.nav_penguin) {// 企鵝館
             new AsyncHttpTask().execute(Zoo_URL + "&q=企鵝館");
         } else if (id == R.id.nav_bird) {// 鳥園區
@@ -170,14 +197,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected Integer doInBackground(String... urls) {
             Integer result = 0;
-            getData(urls[0]);
+            if (types != null) {
+                getEquit(urls[0]);
+            }else{
+                getData(urls[0]);
+            }
             return result;
         }
 
         @Override
         protected void onPostExecute(Integer result) {
-            Log.e(TAG, "result: " + result);
-            mGridAdapter.setGridData(mGridData);
+            if (types != null) {
+                listView.setAdapter(mEquipmentAdapter);
+                mGridView.setVisibility(View.GONE);
+            }else{
+                mGridAdapter.setGridData(mGridData);
+                listView.setVisibility(View.GONE);
+            }
             //Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
             dialogSMS.dismiss();
         }
@@ -186,6 +222,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         protected void onPreExecute() {
             super.onPreExecute();
             mGridData.clear();
+            mEquipData.clear();
+            mGridView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.VISIBLE);
+
+        }
+    }
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
         }
     }
 
@@ -228,6 +292,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mGridData.add(new Animals(A_Name_Ch, A_Location, A_Geo, A_Phylum, A_Class, A_Order, A_Family, A_Distribution
                             , A_Habitat, A_Feature, A_Diet, A_Interpretation, A_Pic01_ALT, A_Pic01_URL, A_Pic02_ALT, A_Pic02_URL, A_Pic03_ALT, A_Pic03_URL
                             , A_Pic04_ALT, A_Pic04_URL, A_Voice01_ALT, A_Voice01_URl, A_Voice02_ALT, A_Voice02_URL, A_Voice03_ALT, A_Voice03_URL, A_Vedio_URL));
+
                 }
             }
         } catch (IOException e) {
@@ -236,6 +301,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
     }
+    public void getEquit(String url) {
+        try {
+            String jsonStr = Jsoup.connect(url).ignoreContentType(true).execute().body();
+            if (jsonStr.indexOf("{") != -1) {
+                JSONObject jsonObj = new JSONObject(jsonStr);
+                JSONObject userDetails = jsonObj.getJSONObject("result");
+                JSONArray data = userDetails.getJSONArray("results");
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject jsonObject = data.getJSONObject(i);
+                    String S_Title = jsonObject.getString("S_Title");
+                    String S_Summary = jsonObject.getString("S_Summary");
+                    String S_Location = jsonObject.getString("S_Location");
+                    String S_Geo = jsonObject.getString("S_Geo");
+                    String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
+                    mEquipData.add(new EquipmentItem(S_Title,S_Summary,S_Location,S_Geo,S_Pic01_URL));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void startDialog() {
         dialogSMS = ProgressDialog.show(this, null, null, false, true);
@@ -258,6 +348,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intentWV.putExtra("URL", url);
         startActivity(intentWV);
         overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
+    }
+    public String getActivityValue() {
+        Intent i = getIntent();
+        String result = i.getStringExtra("types");
+        Log.e(TAG,"result:  " + result);
+        return result;
     }
 
     public void exitDialog(){

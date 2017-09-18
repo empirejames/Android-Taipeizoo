@@ -34,6 +34,11 @@
                     android:numColumns="2"
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="0dp" />
+
+                <ListView
+                    android:id="@+id/lv_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </ScrollView>
     </FrameLayout>

@@ -2,6 +2,7 @@
     <string name="app_name">臺北動物園</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_service">服務設施</string>
     <string name="action_settings">關於</string>
     <string name="copy_right">Copyright © 2017 Taipei Zoo by JamesC.</string>
     <string name="copy_right1">All rights reserved</string>
