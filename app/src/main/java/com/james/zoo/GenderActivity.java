@@ -113,12 +113,6 @@ public class GenderActivity extends AppCompatActivity {
         return result;
     }
 
-    public void changeColor() {
-        Drawable sourceDrawable = ContextCompat.getDrawable(this, R.mipmap.woman);
-        Bitmap sourceBitmap = toBitmap(sourceDrawable);
-        Bitmap finalBitmap = ToChangeColor(sourceBitmap, Color.parseColor("#000000"));
-        //imgWoman.setImageBitmap(finalBitmap);
-    }
 
     public static Bitmap toBitmap(Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
