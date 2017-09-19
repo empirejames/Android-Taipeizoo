@@ -87,8 +87,8 @@ public class EquipmentAdapter extends BaseAdapter {
             if(!items.getS_pic_URL().toString().equals("")){
                 Picasso.with(mContext)
                         .load(items.getS_pic_URL().toString())
-                        .resize(100,300)
-                        .onlyScaleDown()
+                        .fit()
+                        .centerCrop()
                         .into(holder.imageView);
             }else{
                 holder.imageView.setImageResource(R.mipmap.no_image);

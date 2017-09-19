@@ -41,7 +41,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:textSize="25dp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#BB7B76"
                     android:text="遊客服務中心" />
                 <TextView
                     android:id="@+id/tv_location"
