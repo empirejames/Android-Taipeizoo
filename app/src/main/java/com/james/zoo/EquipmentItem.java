@@ -8,12 +8,13 @@ import android.content.Context;
 
 public class EquipmentItem {
 
-    private String s_item, s_summary, s_location, s_geo, s_pic_URL, killer;
+    private String s_item, s_summary, s_location,s_gps, s_geo, s_pic_URL, killer;
     private int _id;
-    public EquipmentItem(String s_item , String s_summary, String s_location, String s_geo, String killer, String s_pic_URL){
+    public EquipmentItem(String s_item , String s_summary, String s_location,String s_gps, String s_geo, String killer, String s_pic_URL){
         this.s_item = s_item;
         this.s_summary = s_summary;
         this.s_location = s_location;
+        this.s_gps = s_gps;
         this.s_geo = s_geo;
         this.killer = killer;
         this.s_pic_URL = s_pic_URL;
@@ -32,6 +33,9 @@ public class EquipmentItem {
     }
     public String getS_location() {
         return s_location;
+    }
+    public String getS_gps() {
+        return s_gps;
     }
     public String getS_geo() {
         return s_geo;

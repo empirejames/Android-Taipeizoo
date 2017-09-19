@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -35,6 +38,9 @@ public class AnimalsDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal);
         initView();
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("F618803C89E1614E3394A55D5E7A756B").build(); //Nexus 5
+        mAdView.loadAd(adRequest);
         Intent intent = getIntent();
         Bundle buldle = intent.getExtras();
         Location = buldle.getString("Location");

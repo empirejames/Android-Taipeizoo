@@ -77,7 +77,7 @@ public class ImageAdapterGridView extends ArrayAdapter<Animals> {
             holder.textView.setText(animals.getName_Ch());
         }
         if(animals.getPic1_URL().toString().equals("")){
-            holder.imageView.setImageResource(R.drawable.ic_error_outline_white_24dp);
+            holder.imageView.setImageResource(R.mipmap.no_image_text);
         }else{
             Picasso.with(mContext)
                     .load(animals.getPic1_URL().toString())

@@ -44,7 +44,7 @@ public class FragmentAbout extends AppCompatActivity {
         btn_evalution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.stockparser"));
+                Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.zoo"));
                 startActivity(intentDL);
             }
         });

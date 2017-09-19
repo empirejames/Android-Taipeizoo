@@ -91,7 +91,11 @@ public class EquipmentAdapter extends BaseAdapter {
                         .centerCrop()
                         .into(holder.imageView);
             }else{
-                holder.imageView.setImageResource(R.mipmap.no_image);
+                Picasso.with(mContext)
+                        .load(R.mipmap.no_image_text)
+                        .fit()
+                        .centerCrop()
+                        .into(holder.imageView);
             }
         }
         return row;

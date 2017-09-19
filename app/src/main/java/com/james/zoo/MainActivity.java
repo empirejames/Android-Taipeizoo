@@ -35,6 +35,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Bundle bundle = new Bundle();
     private String types;
     TinyDB tinydb;
-    String alreadyGj;
+    String alreadyGj, result;
     Double longitude, latitude;
     private LocationManager lms;
     final private int REQUEST_CODE_ASK_ALL = 122;
@@ -79,6 +85,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (alreadyGj.equals("")) {
             alreadyGj = "true";
         }
+        new AppUpdater(this)
+                .setUpdateFrom(UpdateFrom.GOOGLE_PLAY)
+                .setDisplay(Display.DIALOG)
+                .showAppUpdated(false)  // 若已是最新版本, 則 true: 仍會提示之, false: 不會提示之
+                .start();
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("F618803C89E1614E3394A55D5E7A756B").build(); //Nexus 5
+        mAdView.loadAd(adRequest);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -97,6 +111,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mEquipmentAdapter = new EquipmentAdapter(this, R.layout.activity_equiment_layout, mEquipData);
 
         mGridView.setAdapter(mGridAdapter);
+        listView.setOnItemClickListener(new ListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String [] gps = getGpsLocation(mEquipData.get(position).getS_gps());
+                String vDirectionUrl = "http://maps.google.com/?q="+gps[1]+","+gps[0];
+                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(vDirectionUrl) );
+                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                startActivity(intent);
+            }
+        });
+
+
         mGridView.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -329,8 +355,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
                     String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]), longitude, latitude));
                     String[] distanceKil = distanceFin.split("公");
-                    Log.e(TAG, distanceKil[0] + " .. " + distanceKil[1] + "");
-                    mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location, distanceKil[0], distanceKil[1], S_Pic01_URL));
+                    mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location,S_Geo, distanceKil[0], distanceKil[1], S_Pic01_URL));
                 }
             }
         } catch (IOException e) {
@@ -447,7 +472,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public String getActivityValue() {
         Intent i = getIntent();
-        String result = i.getStringExtra("types");
+        result = i.getStringExtra("types");
         Log.e(TAG, "result:  " + result);
         return result;
     }
@@ -465,31 +490,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void exitDialog() {
         if (alreadyGj.toString().equals("true")) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("◎ 給個 5 星好評\n◎ 一同愛護動物\n◎ 可回饋問題讓我們知道")
-                    .setTitle("感恩您的使用")
-                    .setCancelable(false)
-                    .setPositiveButton("讚", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.animalshome"));
-                            startActivity(intentDL);
-                        }
-                    })
-                    .setNegativeButton("已經讚囉", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.this.finish();
-                        }
-                    })
-                    .setNeutralButton("不再提示", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            tinydb.putString("GJ", "false");
-                            MainActivity.this.finish();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-        } else {
-            MainActivity.this.finish();
+            if (result == null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("◎ 給個 5 星好評\n◎ 一同愛護動物\n◎ 可回饋問題讓我們知道")
+                        .setTitle("感恩您的使用")
+                        .setCancelable(false)
+                        .setPositiveButton("讚", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.animalshome"));
+                                startActivity(intentDL);
+                            }
+                        })
+                        .setNegativeButton("已經讚囉", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.this.finish();
+                            }
+                        })
+                        .setNeutralButton("不再提示", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                tinydb.putString("GJ", "false");
+                                MainActivity.this.finish();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            } else {
+                MainActivity.this.finish();
+            }
         }
     }
 }
