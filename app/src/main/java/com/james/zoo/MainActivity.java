@@ -44,6 +44,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String TAG = MainActivity.class.getSimpleName();
@@ -60,11 +62,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String types;
     TinyDB tinydb;
     String alreadyGj;
-    Double longitude , latitude;
+    Double longitude, latitude;
     private LocationManager lms;
     final private int REQUEST_CODE_ASK_ALL = 122;
     private String Zoo_URL = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=a3e2b221-75e0-45c1-8f97-75acbd43d613";
-    private String equit_URL ="http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=5048d475-7642-43ee-ac6f-af0a368d63bf";
+    private String equit_URL = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=5048d475-7642-43ee-ac6f-af0a368d63bf";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tinydb = new TinyDB(MainActivity.this);
         alreadyGj = tinydb.getString("GJ");
         types = getActivityValue();
-        Log.e(TAG,"Types ... " + types);
-        if(alreadyGj.equals("")){
-            alreadyGj="true";
+        //Log.e(TAG, "Types ... " + types);
+        if (alreadyGj.equals("")) {
+            alreadyGj = "true";
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mGridData = new ArrayList<>();
         mEquipData = new ArrayList<>();
         mGridAdapter = new ImageAdapterGridView(this, R.layout.grid_item, mGridData);
-        mEquipmentAdapter = new EquipmentAdapter(this,R.layout.activity_equiment_layout,mEquipData);
+        mEquipmentAdapter = new EquipmentAdapter(this, R.layout.activity_equiment_layout, mEquipData);
 
         mGridView.setAdapter(mGridAdapter);
         mGridView.setOnItemClickListener(new GridView.OnItemClickListener() {
@@ -116,10 +119,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Toast.makeText(AnimalActivity.this, animals.getTid()+" . " + animals.getWebId(), Toast.LENGTH_SHORT).show();
             }
         });
-        if(types ==null){
+        if (types == null) {
             startDialog();
             new AsyncHttpTask().execute(Zoo_URL + "&q=企鵝館");
-        }else{
+        } else {
             checkPermission();
         }
 
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
             return true;
-        }else if(id == R.id.action_services){
+        } else if (id == R.id.action_services) {
             Intent i = new Intent(getApplicationContext(), GenderActivity.class);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
@@ -205,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Integer result = 0;
             if (types != null) {
                 getEquit(urls[0]);
-            }else{
+            } else {
                 getData(urls[0]);
             }
             return result;
@@ -214,10 +217,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected void onPostExecute(Integer result) {
             if (types != null) {
+                DistanceSort(mEquipData);
                 listView.setAdapter(mEquipmentAdapter);
-
                 mGridView.setVisibility(View.GONE);
-            }else{
+            } else {
                 mGridAdapter.setGridData(mGridData);
                 listView.setVisibility(View.GONE);
             }
@@ -235,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
     }
+
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
@@ -308,6 +312,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
     }
+
     public void getEquit(String url) {
         try {
             String jsonStr = Jsoup.connect(url).ignoreContentType(true).execute().body();
@@ -322,10 +327,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String S_Location = jsonObject.getString("S_Location");
                     String S_Geo = jsonObject.getString("S_Geo");
                     String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
-                    String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]),longitude,latitude));
-                    String [] distanceKil = distanceFin.split("公");
-                    Log.e(TAG,distanceKil[0] + " .. " + distanceKil[1] + "");
-                    mEquipData.add(new EquipmentItem(S_Title,S_Summary,S_Location,distanceKil[0],distanceKil[1],S_Pic01_URL));
+                    String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]), longitude, latitude));
+                    String[] distanceKil = distanceFin.split("公");
+                    Log.e(TAG, distanceKil[0] + " .. " + distanceKil[1] + "");
+                    mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location, distanceKil[0], distanceKil[1], S_Pic01_URL));
                 }
             }
         } catch (IOException e) {
@@ -335,18 +340,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void checkPermission(){
+    private void DistanceSort(ArrayList<EquipmentItem> equip) {
+        //Log.e(TAG, "Sort");
+        Collections.sort(equip, new Comparator<EquipmentItem>() {
+
+            @Override
+            public int compare(EquipmentItem equip1, EquipmentItem equip2) {
+
+                double a = Double.parseDouble(equip1.getS_geo());
+                double b = Double.parseDouble(equip2.getS_geo());
+                //Log.e(TAG,a + " V.S " + b);
+                return a < b ? -1 : 1;
+            }
+        });
+    }
+
+    public void checkPermission() {
         LocationManager status = (LocationManager) (this.getSystemService(Context.LOCATION_SERVICE));
         if (status.isProviderEnabled(LocationManager.GPS_PROVIDER) || status.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             //如果GPS或網路定位開啟，呼叫locationServiceInitial()更新位置
             locationServiceInitial();
         } else {
             Toast.makeText(this, "請開啟定位服務", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));	//開啟設定頁面
+            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));    //開啟設定頁面
         }
     }
+
     private void locationServiceInitial() {
-        lms = (LocationManager) getSystemService(LOCATION_SERVICE);	//取得系統定位服務
+        lms = (LocationManager) getSystemService(LOCATION_SERVICE);    //取得系統定位服務
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if ((checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                     || (checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
@@ -355,8 +376,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         android.Manifest.permission.ACCESS_FINE_LOCATION,
                         android.Manifest.permission.ACCESS_COARSE_LOCATION,
                 }, REQUEST_CODE_ASK_ALL);
-            }else{
-                Location location = lms.getLastKnownLocation(LocationManager.GPS_PROVIDER);	//使用GPS定位座標
+            } else {
+                Location location = lms.getLastKnownLocation(LocationManager.GPS_PROVIDER);    //使用GPS定位座標
                 getLocation(location);
                 startDialog();
                 Log.e(TAG, "ELSE : " + equit_URL + "&q=" + types);
@@ -364,17 +385,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
-    private void getLocation(Location location) {	//將定位資訊顯示在畫面中
-        if(location != null) {
-            longitude = location.getLongitude();	//取得經度
-            latitude = location.getLatitude();	//取得緯度
-            Log.e(TAG, longitude + " .. " + latitude);
+
+    private void getLocation(Location location) {    //將定位資訊顯示在畫面中
+        if (location != null) {
+            longitude = location.getLongitude();    //取得經度
+            latitude = location.getLatitude();    //取得緯度
+            //Log.e(TAG, longitude + " .. " + latitude);
         } else {
             Toast.makeText(this, "無法定位座標", Toast.LENGTH_LONG).show();
         }
     }
-    public double Distance(double longitude1, double latitude1, double longitude2,double latitude2) {
-        Log.e(TAG,longitude1 + "." +latitude1 + " V.S. " + longitude2 + "."+latitude2 );
+
+    public double Distance(double longitude1, double latitude1, double longitude2, double latitude2) {
+        //Log.e(TAG, longitude1 + "." + latitude1 + " V.S. " + longitude2 + "." + latitude2);
         double radLatitude1 = latitude1 * Math.PI / 180;
         double radLatitude2 = latitude2 * Math.PI / 180;
         double l = radLatitude1 - radLatitude2;
@@ -385,16 +408,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         distance = distance * 6378137.0;
         distance = Math.round(distance * 10000) / 10000;
         DistanceText(distance);
-        return distance ;
+        return distance;
     }
-    private String DistanceText(double distance)
-    {
-        if(distance < 1000 ){
-            Log.e(TAG, String.valueOf((int)distance) + "公尺");
-            return String.valueOf((int)distance) + "公尺" ;
-        } else{
-            Log.e(TAG, new DecimalFormat("#.00").format(distance/1000) + "公里");
-            return new DecimalFormat("#.00").format(distance/1000) + "公里" ;
+
+    private String DistanceText(double distance) {
+        if (distance < 1000) {
+            //Log.e(TAG, String.valueOf((int) distance) + "公尺");
+            return String.valueOf((int) distance) + "公尺";
+        } else {
+            //Log.e(TAG, new DecimalFormat("#.00").format(distance / 1000) + "公里");
+            return new DecimalFormat("#.00").format(distance / 1000) + "公里";
         }
     }
 
@@ -414,30 +437,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }).start();
     }
+
     private void openWebView(String url, String name) {
         Intent intentWV = new Intent(MainActivity.this, WebViewActivity.class);
         intentWV.putExtra("URL", url);
         startActivity(intentWV);
         overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
     }
+
     public String getActivityValue() {
         Intent i = getIntent();
         String result = i.getStringExtra("types");
-        Log.e(TAG,"result:  " + result);
+        Log.e(TAG, "result:  " + result);
         return result;
     }
-    public String[] getGpsLocation(String Geo){
+
+    public String[] getGpsLocation(String Geo) {
         String result = ""; //MULTIPOINT ((121.5831587 24.9971109))
         String gps[];
-        String temp [];
-        result = Geo.substring(Geo.indexOf("(")+2,Geo.indexOf(")")-1);
+        String temp[];
+        result = Geo.substring(Geo.indexOf("(") + 2, Geo.indexOf(")") - 1);
         temp = result.split(" ");
         gps = temp;
         //gps = temp[1] + ","+temp[0];
         return gps;
     }
-    public void exitDialog(){
-        if(alreadyGj.toString().equals("true")){
+
+    public void exitDialog() {
+        if (alreadyGj.toString().equals("true")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("◎ 給個 5 星好評\n◎ 一同愛護動物\n◎ 可回饋問題讓我們知道")
                     .setTitle("感恩您的使用")
@@ -461,7 +488,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     });
             AlertDialog alert = builder.create();
             alert.show();
-        }else{
+        } else {
             MainActivity.this.finish();
         }
     }

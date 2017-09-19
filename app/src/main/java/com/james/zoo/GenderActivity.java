@@ -96,7 +96,9 @@ public class GenderActivity extends AppCompatActivity {
             i.putExtra("types", "餐飲服務");
         }
         startActivity(i);
+        finish();
         overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
+
     }
 
     @Override
