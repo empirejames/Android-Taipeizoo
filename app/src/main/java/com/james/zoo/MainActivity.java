@@ -114,9 +114,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                String [] gps = getGpsLocation(mEquipData.get(position).getS_gps());
-                String vDirectionUrl = "http://maps.google.com/?q="+gps[1]+","+gps[0];
-                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(vDirectionUrl) );
+                String[] gps = getGpsLocation(mEquipData.get(position).getS_gps());
+                String vDirectionUrl = "http://maps.google.com/?q=" + gps[1] + "," + gps[0];
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(vDirectionUrl));
                 intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
                 startActivity(intent);
             }
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
                     String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]), longitude, latitude));
                     String[] distanceKil = distanceFin.split("公");
-                    mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location,S_Geo, distanceKil[0], distanceKil[1], S_Pic01_URL));
+                    mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location, S_Geo, distanceKil[0], distanceKil[1], S_Pic01_URL));
                 }
             }
         } catch (IOException e) {
@@ -401,6 +401,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         android.Manifest.permission.ACCESS_FINE_LOCATION,
                         android.Manifest.permission.ACCESS_COARSE_LOCATION,
                 }, REQUEST_CODE_ASK_ALL);
+                finish();
             } else {
                 Location location = lms.getLastKnownLocation(LocationManager.GPS_PROVIDER);    //使用GPS定位座標
                 getLocation(location);
@@ -497,7 +498,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .setCancelable(false)
                         .setPositiveButton("讚", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.animalshome"));
+                                Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.zoo"));
                                 startActivity(intentDL);
                             }
                         })
