@@ -518,6 +518,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             } else {
                 MainActivity.this.finish();
             }
+        }else{
+            MainActivity.this.finish();
         }
     }
 }
