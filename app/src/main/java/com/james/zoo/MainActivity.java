@@ -107,10 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mGridView = (GridView) findViewById(R.id.gridview);
         mGridData = new ArrayList<>();
         mEquipData = new ArrayList<>();
-        mGridAdapter = new ImageAdapterGridView(this, R.layout.grid_item, mGridData);
-        mEquipmentAdapter = new EquipmentAdapter(this, R.layout.activity_equiment_layout, mEquipData);
 
-        mGridView.setAdapter(mGridAdapter);
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -194,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        mGridAdapter.clear();
         startDialog();
         types = null;
         if (id == R.id.nav_penguin) {// 企鵝館
@@ -216,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_afreca) { // 非洲動物區
             new AsyncHttpTask().execute(Zoo_URL + "&q=非洲動物區");
         } else if (id == R.id.nav_TaiwanAnimals) { // 台灣動物區
-            new AsyncHttpTask().execute(Zoo_URL + "&q=台灣動物區");
+            new AsyncHttpTask().execute(Zoo_URL + "&q=臺灣動物區");
         } else if (id == R.id.nav_Asia) { // 亞洲熱帶雨林區
             new AsyncHttpTask().execute(Zoo_URL + "&q=亞洲熱帶雨林區");
         } else if (id == R.id.nav_insect) { // 兩棲爬蟲動物館
@@ -244,9 +240,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         protected void onPostExecute(Integer result) {
             if (types != null) {
                 DistanceSort(mEquipData);
+                mEquipmentAdapter = new EquipmentAdapter(MainActivity.this, R.layout.activity_equiment_layout, mEquipData);
                 listView.setAdapter(mEquipmentAdapter);
+                listView.invalidateViews();
                 mGridView.setVisibility(View.GONE);
             } else {
+                mGridAdapter = new ImageAdapterGridView(MainActivity.this, R.layout.grid_item, mGridData);
+                mGridView.setAdapter(mGridAdapter);
                 mGridAdapter.setGridData(mGridData);
                 listView.setVisibility(View.GONE);
             }

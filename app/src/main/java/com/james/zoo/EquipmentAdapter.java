@@ -61,45 +61,43 @@ public class EquipmentAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //View row = inflater.inflate(R.layout.activity_equiment_layout, parent, false);
-        View row = convertView;
-        if (row == null) {
+        if (convertView == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-            row = inflater.inflate(layoutResourceId, parent, false);
-            holder = new ViewHolder();
-            EquipmentItem items = mListItems.get(position);
-
-            holder.imageView = (ImageView) row.findViewById(R.id.imageView_pic);
-            holder.item = (TextView) row.findViewById(R.id.tv_item);
-            holder.item.setText(items.getS_item());
-            holder.location = (TextView) row.findViewById(R.id.tv_location);
-            holder.location.setText(items.getS_location());
-            holder.distance = (TextView) row.findViewById(R.id.tv_distance);
-            holder.distance.setText(items.getS_geo());
-            holder.unit = (TextView) row.findViewById(R.id.tv_unit);
-            if(items.getKiller().contains("里")){
-                holder.unit.setText("公里");
-            }else{
-                holder.unit.setText("公尺");
-            }
-
-            holder.summary = (TextView) row.findViewById(R.id.tv_summary);
-            holder.summary.setText(items.getS_summary());
-            if(!items.getS_pic_URL().toString().equals("")){
-                Picasso.with(mContext)
-                        .load(items.getS_pic_URL().toString())
-                        .fit()
-                        .centerCrop()
-                        .into(holder.imageView);
-            }else{
-                Picasso.with(mContext)
-                        .load(R.mipmap.no_image_text)
-                        .fit()
-                        .centerCrop()
-                        .into(holder.imageView);
-            }
+            convertView = inflater.inflate(layoutResourceId, parent, false);
         }
-        return row;
+        holder = new ViewHolder();
+        EquipmentItem items = mListItems.get(position);
+        holder.imageView = convertView.findViewById(R.id.imageView_pic);
+        holder.item = convertView.findViewById(R.id.tv_item);
+        holder.item.setText(items.getS_item());
+        holder.location = convertView.findViewById(R.id.tv_location);
+        holder.location.setText(items.getS_location());
+        holder.distance = convertView.findViewById(R.id.tv_distance);
+        holder.distance.setText(items.getS_geo());
+        holder.unit = convertView.findViewById(R.id.tv_unit);
+        if (items.getKiller().contains("里")) {
+            holder.unit.setText("公里");
+        } else {
+            holder.unit.setText("公尺");
+        }
+        holder.summary = convertView.findViewById(R.id.tv_summary);
+        holder.summary.setText(items.getS_summary());
+        if (!items.getS_pic_URL().toString().equals("")) {
+            Picasso.with(mContext)
+                    .load(items.getS_pic_URL().toString())
+                    .fit()
+                    .centerCrop()
+                    .into(holder.imageView);
+        } else {
+            Picasso.with(mContext)
+                    .load(R.mipmap.no_image_text)
+                    .fit()
+                    .centerCrop()
+                    .into(holder.imageView);
+        }
+        return convertView;
     }
+
     static class ViewHolder {
         ImageView imageView;
         TextView item, location, distance, summary, unit;
