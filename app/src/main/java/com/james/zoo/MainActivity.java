@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -54,7 +55,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
     private String TAG = MainActivity.class.getSimpleName();
     private ArrayList<Animals> mGridData;
     private ArrayList<EquipmentItem> mEquipData;
@@ -224,11 +225,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     protected void attachBaseContext(Context context) {
         super.attachBaseContext(context);
         MultiDex.install(this);
     }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        longitude = location.getLongitude();    //取得經度
+        latitude = location.getLatitude();    //取得緯度
+        Log.e(TAG, "Change........");
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
+
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {
         @Override
         protected Integer doInBackground(String... urls) {
@@ -358,6 +383,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String S_Location = jsonObject.getString("S_Location");
                     String S_Geo = jsonObject.getString("S_Geo");
                     String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
+                    Log.e(TAG, "L " + longitude + "LL " + latitude);
                     String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]), longitude, latitude));
                     String[] distanceKil = distanceFin.split("公");
                     mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location, S_Geo, distanceKil[0], distanceKil[1], S_Pic01_URL));
@@ -386,18 +412,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void checkPermission() {
-        LocationManager status = (LocationManager) (this.getSystemService(Context.LOCATION_SERVICE));
-        if (status.isProviderEnabled(LocationManager.GPS_PROVIDER) || status.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+        lms = (LocationManager) (this.getSystemService(Context.LOCATION_SERVICE));
+        if (lms.isProviderEnabled(LocationManager.GPS_PROVIDER) || lms.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             //如果GPS或網路定位開啟，呼叫locationServiceInitial()更新位置
             locationServiceInitial();
         } else {
+            locationServiceInitial();
             Toast.makeText(this, "請開啟定位服務", Toast.LENGTH_LONG).show();
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));    //開啟設定頁面
         }
     }
 
     private void locationServiceInitial() {
-        lms = (LocationManager) getSystemService(LOCATION_SERVICE);    //取得系統定位服務
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if ((checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                     || (checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
@@ -408,7 +435,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }, REQUEST_CODE_ASK_ALL);
                 finish();
             } else {
-                Location location = lms.getLastKnownLocation(LocationManager.GPS_PROVIDER);    //使用GPS定位座標
+                Location location  =lms.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);    ;
+                if (location == null) {
+                    location = lms.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                }
                 getLocation(location);
                 startDialog();
                 Log.e(TAG, "ELSE : " + equit_URL + "&q=" + types);
@@ -523,7 +553,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             } else {
                 MainActivity.this.finish();
             }
-        }else{
+        } else {
             MainActivity.this.finish();
         }
     }
