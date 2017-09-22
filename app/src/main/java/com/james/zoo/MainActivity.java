@@ -236,7 +236,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onLocationChanged(Location location) {
         longitude = location.getLongitude();    //取得經度
         latitude = location.getLatitude();    //取得緯度
-        Log.e(TAG, "Change........");
     }
 
     @Override
@@ -383,7 +382,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String S_Location = jsonObject.getString("S_Location");
                     String S_Geo = jsonObject.getString("S_Geo");
                     String S_Pic01_URL = jsonObject.getString("S_Pic01_URL");
-                    Log.e(TAG, "L " + longitude + "LL " + latitude);
                     String distanceFin = DistanceText(Distance(Double.parseDouble(getGpsLocation(S_Geo)[0]), Double.parseDouble(getGpsLocation(S_Geo)[1]), longitude, latitude));
                     String[] distanceKil = distanceFin.split("公");
                     mEquipData.add(new EquipmentItem(S_Title, S_Summary, S_Location, S_Geo, distanceKil[0], distanceKil[1], S_Pic01_URL));
