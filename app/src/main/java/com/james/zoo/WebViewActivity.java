@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
@@ -14,6 +16,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.ZoomButtonsController;
 
 import java.lang.reflect.Field;
@@ -26,6 +29,7 @@ public class WebViewActivity extends Activity {
     WebSettings webSettings;
     String mailUrl = "tcapoa8@mail.taipei.gov.tw";
     String vDirectionUrl;
+    TextView txt_Title;
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -37,12 +41,15 @@ public class WebViewActivity extends Activity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-
+        Display display = getWindowManager().getDefaultDisplay();
+        int width = display.getWidth();
+        txt_Title = (TextView) findViewById(R.id.tv_toptitlebar_name);
         Bundle extras = getIntent().getExtras();
         webViewUrl = extras.getString("URL");
-        webName = extras.getString("name");
-        webAcceptnum = extras.getString("acceptnum");
-        webType = extras.getString("type");
+        webName = extras.getString("Location");
+        txt_Title.setText(webName);
+        String data = "<html><head><title>Example</title><meta name=\"viewport\"\"content=\"width=" + width + ", initial-scale=0.65 \" /></head>";
+        data = data + "<body><center><img width=\"" + width + "\" src=\"" + webViewUrl + "\" /></center></body></html>";
         webView = (WebView) findViewById(R.id.webview);
         webSettings = webView.getSettings();
         webSettings.setUseWideViewPort(true);
@@ -57,10 +64,11 @@ public class WebViewActivity extends Activity {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
-        setZoomControlGone(webView);
-        webView.setInitialScale(180);
-        webView.loadUrl(webViewUrl);
-        webView.setBackgroundColor(0x00000000);
+        //setZoomControlGone(webView);
+
+        webView.loadData(data, "text/html", null);
+        //webView.setBackgroundColor(0x00000000);
+        // webView.setInitialScale(180);
         if (Build.VERSION.SDK_INT >= 19) {
             webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null);
         } else {
@@ -76,15 +84,18 @@ public class WebViewActivity extends Activity {
             }
         });
     }
-
+    public void backClick(View view) {
+        this.finish();
+        overridePendingTransition(R.anim.slide_in_right_1, R.anim.slide_in_right_2);
+    }
     @Override
     protected void onResume() {
         super.onResume();
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        this.finish();
         overridePendingTransition(R.anim.slide_in_right_1, R.anim.slide_in_right_2);
     }
 

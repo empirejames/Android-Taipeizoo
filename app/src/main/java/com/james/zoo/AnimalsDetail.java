@@ -1,5 +1,6 @@
 package com.james.zoo;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,8 +9,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,7 @@ import com.landptf.bean.BannerBean;
 import com.landptf.view.BannerM;
 
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +32,12 @@ import java.util.List;
  */
 
 public class AnimalsDetail extends AppCompatActivity {
-    private ArrayList<String> getMedData = new ArrayList<String>();
+    private ArrayList<Animals> getAniData = new ArrayList<Animals>();
+    private Animals animals;
     private String Location, Geo, Video, imgURL1, imgURL2, imgURL3, imgURL4, name, classes, distribution, habitat, feature, diet;
     private String TAG = AnimalsDetail.class.getSimpleName();
     private TextView tv_name, tv_classes, tv_distribution, tv_habitat, tv_feature, tv_diet, tv_toptitlebar_name, tv_ZooMap, tv_voiceZoo;
-    private ImageView imgView;
+    private ImageView imgView , img_dialog;
     private Button button;
     private List<BannerBean> bannerList;
 
@@ -41,7 +46,7 @@ public class AnimalsDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal);
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("F618803C89E1614E3394A55D5E7A756B").build(); //Nexus 5
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("7EC78E2E44AAFFCB85B0B0A916A71418").build(); //Nexus 5
         mAdView.loadAd(adRequest);
         getIntentData();
         initData();
@@ -147,7 +152,6 @@ public class AnimalsDetail extends AppCompatActivity {
     }
 
     public void initView() {
-        //imgView = (ImageView) findViewById(R.id.img_pic);
         tv_name = (TextView) findViewById(R.id.tv_name);
         tv_classes = (TextView) findViewById(R.id.tv_classes);
         tv_distribution = (TextView) findViewById(R.id.tv_distribution);
@@ -169,12 +173,29 @@ public class AnimalsDetail extends AppCompatActivity {
                         @Override
                         public void onItemClick(int position) {
                             Log.e("landptf", "position = " + position);
+                            String tmpUrl = "";
+                            if (position == 0) {
+                                tmpUrl = imgURL1;
+                            } else if (position == 1) {
+                                tmpUrl = imgURL2;
+                            } else if (position == 2) {
+                                tmpUrl = imgURL3;
+                            } else if (position == 3) {
+                                tmpUrl = imgURL4;
+                            }
+                            openWebView(tmpUrl);
                         }
                     })
                     .show();
         }
     }
-
+    private void openWebView(String url) {
+        Intent intentWV = new Intent(AnimalsDetail.this, WebViewActivity.class);
+        intentWV.putExtra("URL", url);
+        intentWV.putExtra("Location", Location);
+        startActivity(intentWV);
+        overridePendingTransition(R.anim.slide_in_left_1, R.anim.slide_in_left_2);
+    }
 
     public void backClick(View view) {
         this.finish();

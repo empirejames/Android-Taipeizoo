@@ -73,6 +73,7 @@ public class PullToZoomScrollView extends ScrollView {
         int action =ev.getAction();
         switch (action){
             case MotionEvent.ACTION_DOWN:
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 if(mCurrentOffset<=0){
