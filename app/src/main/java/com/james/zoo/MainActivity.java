@@ -42,6 +42,7 @@ import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ListView listView;
     private ImageAdapterGridView mGridAdapter;
     private EquipmentAdapter mEquipmentAdapter;
+    private FirebaseAnalytics mFirebaseAnalytics;
     protected ProgressDialog dialogSMS;
     private Bundle bundle = new Bundle();
     private String types;
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tinydb = new TinyDB(MainActivity.this);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         alreadyGj = tinydb.getString("GJ");
         types = getActivityValue();
         //Log.e(TAG, "Types ... " + types);
@@ -129,7 +132,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 bundle.putString("Location", animals.getLocation());
                 bundle.putString("Geo", animals.getGeo());
                 bundle.putString("Video", animals.getVideo());
-                bundle.putString("imgURL", animals.getPic1_URL());
+                bundle.putString("imgURL1", animals.getPic1_URL());
+                bundle.putString("imgURL2", animals.getPic2_URL());
+                bundle.putString("imgURL3", animals.getPic3_URL());
+                bundle.putString("imgURL4", animals.getPic4_URL());
                 bundle.putString("NameCh", animals.getName_Ch());
                 bundle.putString("Class", animals.getPhylum() + " / " + animals.getClasses()
                         + " / " + animals.getOrder() + " / " + animals.getFamily());
