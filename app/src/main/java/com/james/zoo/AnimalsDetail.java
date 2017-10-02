@@ -36,7 +36,8 @@ public class AnimalsDetail extends AppCompatActivity {
     private Animals animals;
     private String Location, Geo, Video, imgURL1, imgURL2, imgURL3, imgURL4, name, classes, distribution, habitat, feature, diet;
     private String TAG = AnimalsDetail.class.getSimpleName();
-    private TextView tv_name, tv_classes, tv_distribution, tv_habitat, tv_feature, tv_diet, tv_toptitlebar_name, tv_ZooMap, tv_voiceZoo;
+    private TextView tv_name, tv_classes, tv_distribution, tv_habitat, tv_feature, tv_diet, tv_toptitlebar_name;
+    private Button tv_ZooMap, tv_voiceZoo;
     private ImageView imgView , img_dialog;
     private Button button;
     private List<BannerBean> bannerList;
@@ -160,8 +161,10 @@ public class AnimalsDetail extends AppCompatActivity {
         tv_diet = (TextView) findViewById(R.id.tv_diet);
         button = (Button) findViewById(R.id.btnReturn);
         tv_toptitlebar_name = (TextView) findViewById(R.id.tv_toptitlebar_name);
-        tv_ZooMap = (TextView) findViewById(R.id.zooMap);
-        tv_voiceZoo = (TextView) findViewById(R.id.voiceZoo);
+        tv_ZooMap = (Button) findViewById(R.id.btn_zooMap);
+        tv_ZooMap.getBackground().setAlpha(0);
+        tv_voiceZoo = (Button) findViewById(R.id.btn_voiceZoo);
+        tv_voiceZoo.getBackground().setAlpha(0);
         BannerM banner = (BannerM) findViewById(R.id.bm_banner);
         if (banner != null) {
             banner.setBannerBeanList(bannerList)
