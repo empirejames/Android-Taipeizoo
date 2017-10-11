@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         alreadyGj = tinydb.getString("GJ");
         types = getActivityValue();
-        //Log.e(TAG, "Types ... " + types);
+        Log.e(TAG, "Types ... " + types);
         if (alreadyGj.equals("")) {
             alreadyGj = "true";
         }
@@ -406,7 +406,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public int compare(EquipmentItem equip1, EquipmentItem equip2) {
-
                 double a = Double.parseDouble(equip1.getS_geo());
                 double b = Double.parseDouble(equip2.getS_geo());
                 //Log.e(TAG,a + " V.S " + b);
@@ -416,6 +415,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void checkPermission() {
+        Log.e(TAG,"checkPermission...");
         lms = (LocationManager) (this.getSystemService(Context.LOCATION_SERVICE));
         if (lms.isProviderEnabled(LocationManager.GPS_PROVIDER) || lms.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             //如果GPS或網路定位開啟，呼叫locationServiceInitial()更新位置
@@ -428,7 +428,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void locationServiceInitial() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if ((checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                     || (checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
@@ -448,6 +447,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.e(TAG, "ELSE : " + equit_URL + "&q=" + types);
                 new AsyncHttpTask().execute(equit_URL + "&q=" + types);
             }
+        }else {
+            Location location  =lms.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);    ;
+            if (location == null) {
+                location = lms.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
+            getLocation(location);
+            startDialog();
+            Log.e(TAG, "ELSE : " + equit_URL + "&q=" + types);
+            new AsyncHttpTask().execute(equit_URL + "&q=" + types);
         }
     }
 
