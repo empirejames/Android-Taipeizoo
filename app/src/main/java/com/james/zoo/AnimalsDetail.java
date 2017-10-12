@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by 101716 on 2017/9/13.
@@ -37,10 +39,11 @@ public class AnimalsDetail extends AppCompatActivity {
     private String Location, Geo, Video, imgURL1, imgURL2, imgURL3, imgURL4, name, classes, distribution, habitat, feature, diet;
     private String TAG = AnimalsDetail.class.getSimpleName();
     private TextView tv_name, tv_classes, tv_distribution, tv_habitat, tv_feature, tv_diet, tv_toptitlebar_name;
-    private Button tv_ZooMap, tv_voiceZoo;
+    private Button tv_ZooMap, tv_voiceZoo, tv_voiceZoo1;
     private ImageView imgView , img_dialog;
-    private Button button;
+    private Button button ;
     private List<BannerBean> bannerList;
+    private TextToSpeech mTts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class AnimalsDetail extends AppCompatActivity {
         getIntentData();
         initData();
         initView();
+        initializeEngine();
         tv_toptitlebar_name.setText(Location);
         // Log.e(TAG,name +"... "+ classes);
         tv_name.setText(name);
@@ -109,6 +113,12 @@ public class AnimalsDetail extends AppCompatActivity {
                 }
             }
         });
+        tv_voiceZoo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mTts.speak(name +"，"+ habitat + feature, TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
         //new DownloadImageTask((ImageView) findViewById(R.id.img_pic)).execute(imgURL1);
     }
 
@@ -151,6 +161,25 @@ public class AnimalsDetail extends AppCompatActivity {
             bannerList.add(banner4);
         }
     }
+    private void initializeEngine() {
+        mTts = new TextToSpeech(this, mInitListener);
+    }
+    private final TextToSpeech.OnInitListener mInitListener = new TextToSpeech.OnInitListener() {
+        @Override
+        public void onInit(int status) {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = mTts.setLanguage(Locale.CHINESE);
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Log.e(TAG, "Language is not available.");
+                } else {
+                    tv_voiceZoo1.setEnabled(true);
+                }
+            } else {
+                // Initialization failed.
+                Log.e(TAG, "Could not initialize TextToSpeech.");
+            }
+        }
+    };
 
     public void initView() {
         tv_name = (TextView) findViewById(R.id.tv_name);
@@ -165,6 +194,8 @@ public class AnimalsDetail extends AppCompatActivity {
         tv_ZooMap.getBackground().setAlpha(0);
         tv_voiceZoo = (Button) findViewById(R.id.btn_voiceZoo);
         tv_voiceZoo.getBackground().setAlpha(0);
+        tv_voiceZoo1 = (Button) findViewById(R.id.btn_voiceZoo1);
+        tv_voiceZoo1.getBackground().setAlpha(0);
         BannerM banner = (BannerM) findViewById(R.id.bm_banner);
         if (banner != null) {
             banner.setBannerBeanList(bannerList)
@@ -175,7 +206,7 @@ public class AnimalsDetail extends AppCompatActivity {
                     .setOnItemClickListener(new BannerM.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            Log.e("landptf", "position = " + position);
+                            Log.e(TAG, "position = " + position);
                             String tmpUrl = "";
                             if (position == 0) {
                                 tmpUrl = imgURL1;
