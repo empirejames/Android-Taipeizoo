@@ -19,6 +19,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ZoomButtonsController;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.lang.reflect.Field;
 import java.util.Hashtable;
 
@@ -56,6 +59,9 @@ public class WebViewActivity extends Activity {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setSupportZoom(true);
         webSettings.setJavaScriptEnabled(true);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("F618803C89E1614E3394A55D5E7A756B").build(); //Nexus 5
+        mAdView.loadAd(adRequest);
 
         if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
             webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
