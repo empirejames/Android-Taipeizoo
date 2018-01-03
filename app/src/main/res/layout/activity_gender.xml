@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteTransPaent"
-                    android:text="諮詢售票"
+                    android:text="@string/gender_askTicket"
                     android:textColor="@color/white"
                     android:textSize="40dp" />
 
@@ -71,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteTransPaent"
-                    android:text="醫療救護"
+                    android:text="@string/gender_secure"
                     android:textColor="@color/white"
                     android:textSize="40dp" />
             </FrameLayout>
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/whiteTransPaent"
-                android:text="交通服務"
+                android:text="@string/gender_trafic"
                 android:textColor="@color/white"
                 android:textSize="40dp" />
         </FrameLayout>
@@ -136,7 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteTransPaent"
-                    android:text="設施服務"
+                    android:text="@string/gender_facility"
                     android:textColor="@color/white"
                     android:textSize="40dp" />
 
@@ -166,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteTransPaent"
-                    android:text="餐飲服務"
+                    android:text="@string/gender_eatStore"
                     android:textColor="@color/white"
                     android:textSize="40dp" />
             </FrameLayout>

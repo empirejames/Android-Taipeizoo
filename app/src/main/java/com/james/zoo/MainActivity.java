@@ -403,7 +403,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void DistanceSort(ArrayList<EquipmentItem> equip) {
         //Log.e(TAG, "Sort");
         Collections.sort(equip, new Comparator<EquipmentItem>() {
-
             @Override
             public int compare(EquipmentItem equip1, EquipmentItem equip2) {
                 double a = Double.parseDouble(equip1.getS_geo());
@@ -540,21 +539,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (alreadyGj.toString().equals("true")) {
             if (result == null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("◎ 給個 5 星好評\n◎ 一同愛護動物\n◎ 可回饋問題讓我們知道")
-                        .setTitle("感恩您的使用")
+                builder.setMessage(R.string.thanks_notice)
+                        .setTitle(R.string.thanks_using)
                         .setCancelable(false)
-                        .setPositiveButton("讚", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.good, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.zoo"));
                                 startActivity(intentDL);
                             }
                         })
-                        .setNegativeButton("已經讚囉", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(R.string.already_good, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 MainActivity.this.finish();
                             }
                         })
-                        .setNeutralButton("不再提示", new DialogInterface.OnClickListener() {
+                        .setNeutralButton(R.string.not_notice, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 tinydb.putString("GJ", "false");
                                 MainActivity.this.finish();

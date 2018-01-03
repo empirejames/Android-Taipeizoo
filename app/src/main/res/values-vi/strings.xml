@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Sở thú Đài Loan</string>
+	<string name="taipeicity">Sở thú Đài Loan</string>
+	<string name="map">Bản đồ</string>
+	<string name="video">Video</string>
+	<string name="voice">Tiếng nói</string>
+	<string name="thanks_notice">◎ đưa ra lời khen ngợi 5 sao \n ◎ chăm sóc động vật với nhau \n ◎ vấn đề phản hồi cho chúng tôi biết</string>
+	<string name="thanks_using">Cảm ơn bạn đã sử dụng</string>
+	<string name="good">Giống như</string>
+	<string name="already_good">Đã khen ngợi Hello</string>
+	<string name="not_notice">Không nhắc nữa</string>
+	<string name="navigation_drawer_open">Mở ngăn điều hướng</string>
+	<string name="navigation_drawer_close">Đóng ngăn điều khiển điều hướng</string>
+	<string name="action_service">Cơ sở dịch vụ</string>
+	<string name="action_settings">Giới thiệu</string>
+	<string name="copy_right">Bản quyền © 2018 Sở thú Đài Bắc bởi JamesC.</string>
+	<string name="copy_right1">Tất cả các quyền được bảo lưu</string>
+	<string name="app_ver">APP phiên bản 2.7</string>
+	<string name="main_drawer_select">Vui lòng chọn khu vực sở thú</string>
+	<string name="main_drawer_penguin">Penguin Hall</string>
+	<string name="main_drawer_bird">Công viên chim</string>
+	<string name="main_drawer_NoBear">Bảo tàng Koala</string>
+	<string name="main_drawer_panda">Bảo tàng Big Bear</string>
+	<string name="main_drawer_childAnmals">Khu Thú nuôi dành cho Trẻ em</string>
+	<string name="main_drawer_desert">Khu nghỉ mát sa mạc</string>
+	<string name="main_drawer_warmAnimals">Vùng động vật ở ôn đới</string>
+	<string name="main_drawer_australia">Khu Thú nuôi Úc</string>
+	<string name="main_drawer_afreca">Khu vực Động vật Châu Phi</string>
+	<string name="main_drawer_TaiwanAnimals">Vùng động vật Đài Loan</string>
+	<string name="main_drawer_Asia">Khu rừng mưa nhiệt đới châu Á</string>
+	<string name="main_drawer_insect">Bảo tàng loài bò sát Amphibious</string>
+	<string name="gender_askTicket">Tư vấn bán vé</string>
+	<string name="gender_secure">Viện trợ y tế</string>
+	<string name="gender_trafic">Dịch vụ vận tải</string>
+	<string name="gender_facility">Dịch vụ thiết bị</string>
+	<string name="gender_eatStore">Dịch vụ ăn uống</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[Zoo Đài Bắc] Tôi cảm thấy APP tốt đề nghị này cho bạn, bạn có thể nhìn thấy rất nhiều loài động vật tin tức mới nhất Oh \n ◎◎◎ tải miễn phí trên Google Play ◎◎◎ \n https://play.google.com/store</string>
+	<string name="stockFYI">ứng dụng / chi tiết? id = com.james.zoo</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Taipei Zoo</string>
+	<string name="taipeicity">Taipei Zoo</string>
+	<string name="map">map</string>
+	<string name="video">film</string>
+	<string name="voice">voice</string>
+	<string name="thanks_notice">◎ give a 5 star praise \n ◎ animal care together \n ◎ feedback problem let us know</string>
+	<string name="thanks_using">Thanks for your use</string>
+	<string name="good">Thumbs up</string>
+	<string name="already_good">Already praise Hello</string>
+	<string name="not_notice">Do not remind again</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="action_service">Service Facilities</string>
+	<string name="action_settings">on</string>
+	<string name="copy_right">Copyright © 2018 Taipei Zoo by JamesC.</string>
+	<string name="copy_right1">All rights reserved</string>
+	<string name="app_ver">APP Version 2.7</string>
+	<string name="main_drawer_select">Please select the zoo area</string>
+	<string name="main_drawer_penguin">Penguin Hall</string>
+	<string name="main_drawer_bird">Bird Park</string>
+	<string name="main_drawer_NoBear">Koala Museum</string>
+	<string name="main_drawer_panda">Big Bear Museum</string>
+	<string name="main_drawer_childAnmals">Children\'s Animal Zone</string>
+	<string name="main_drawer_desert">Desert Animal Zone</string>
+	<string name="main_drawer_warmAnimals">Temperate animal zone</string>
+	<string name="main_drawer_australia">Australian Animal Zone</string>
+	<string name="main_drawer_afreca">African Animal Zone</string>
+	<string name="main_drawer_TaiwanAnimals">Taiwan Animal Zone</string>
+	<string name="main_drawer_Asia">Asia tropical rain forest area</string>
+	<string name="main_drawer_insect">Amphibious reptile museum</string>
+	<string name="gender_askTicket">Advisory ticketing</string>
+	<string name="gender_secure">Medical aid</string>
+	<string name="gender_trafic">Transportation services</string>
+	<string name="gender_facility">Facilities Services</string>
+	<string name="gender_eatStore">Catering Services</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[Taipei Zoo] I think this is a good app to recommend to you, you can see a lot of animal news. \\ N ◎ ◎ Google Play Free download ◎ ◎ \n https://play.google.com/store</string>
+	<string name="stockFYI">apps / details? id = com.james.zoo</string>
+
+</resources>

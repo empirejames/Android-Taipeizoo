@@ -19,11 +19,4 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </com.james.zoo.PullToZoomScrollView>
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
 </LinearLayout>

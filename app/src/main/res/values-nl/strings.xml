@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Taipei Zoo</string>
+	<string name="taipeicity">Taipei Zoo</string>
+	<string name="map">kaart</string>
+	<string name="video">film</string>
+	<string name="voice">stem</string>
+	<string name="thanks_notice">◎ geef een 5-sterren lof \n ◎ dierenverzorging bij elkaar \n ◎ feedback probleem laat het ons weten</string>
+	<string name="thanks_using">Bedankt voor uw gebruik</string>
+	<string name="good">lof</string>
+	<string name="already_good">Al lof Hallo</string>
+	<string name="not_notice">Niet langer snel</string>
+	<string name="navigation_drawer_open">Open de navigatielade</string>
+	<string name="navigation_drawer_close">Sluit de navigatielade</string>
+	<string name="action_service">Service faciliteiten</string>
+	<string name="action_settings">op</string>
+	<string name="copy_right">Copyright © 2018 Taipei Zoo door JamesC.</string>
+	<string name="copy_right1">Alle rechten voorbehouden</string>
+	<string name="app_ver">APP-versie 2.7</string>
+	<string name="main_drawer_select">Selecteer de dierentuin</string>
+	<string name="main_drawer_penguin">Penguin Hall</string>
+	<string name="main_drawer_bird">Bird Park</string>
+	<string name="main_drawer_NoBear">Koalamuseum</string>
+	<string name="main_drawer_panda">Big Bear Museum</string>
+	<string name="main_drawer_childAnmals">Animal Zone voor kinderen</string>
+	<string name="main_drawer_desert">Desert Animal Zone</string>
+	<string name="main_drawer_warmAnimals">Gematigde dierenzone</string>
+	<string name="main_drawer_australia">Australische dierenzone</string>
+	<string name="main_drawer_afreca">Afrikaanse dierenzone</string>
+	<string name="main_drawer_TaiwanAnimals">Taiwan Animal Zone</string>
+	<string name="main_drawer_Asia">Het tropische regenwoudgebied van Azië</string>
+	<string name="main_drawer_insect">Amfibisch reptielmuseum</string>
+	<string name="gender_askTicket">Advies ticketing</string>
+	<string name="gender_secure">Medische hulp</string>
+	<string name="gender_trafic">Transportdiensten</string>
+	<string name="gender_facility">Facilitaire diensten</string>
+	<string name="gender_eatStore">Cateringservice</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[Taipei Zoo] Ik denk dat dit een goede app is om aan te bevelen, je kunt veel dierennieuws zien. \\ N ◎ ◎ Google Play Gratis download ◎ ◎ \n https://play.google.com/store</string>
+	<string name="stockFYI">apps / details? id = com.james.zoo</string>
+
+</resources>

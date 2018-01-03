@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:text="地圖"
+                    android:text="@string/map"
                     android:textColor="#ffffff"
                     android:textSize="18dp" />
             </RelativeLayout>
@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:text="影片"
+                    android:text="@string/video"
                     android:textColor="#ffffff"
                     android:textSize="18dp" />
             </RelativeLayout>
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:text="語音"
+                    android:text="@string/voice"
                     android:textColor="#ffffff"
                     android:textSize="18dp" />
             </RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Zoológico de Taipei</string>
+	<string name="taipeicity">Zoológico de Taipei</string>
+	<string name="map">Mapa</string>
+	<string name="video">Vídeo</string>
+	<string name="voice">Voz</string>
+	<string name="thanks_notice">◎ dê um elogio de 5 estrelas \n ◎ cuidados com os animais juntos \n ◎ problema de comentários, avise-nos</string>
+	<string name="thanks_using">Obrigado pelo seu uso</string>
+	<string name="good">Gosto</string>
+	<string name="already_good">Já elogie Olá</string>
+	<string name="not_notice">Não é mais solicitado</string>
+	<string name="navigation_drawer_open">Abrir a gaveta de navegação</string>
+	<string name="navigation_drawer_close">Fechar gaveta de navegação</string>
+	<string name="action_service">Instalações de serviço</string>
+	<string name="action_settings">Sobre</string>
+	<string name="copy_right">Copyright © 2018 Taipei Zoo by JamesC.</string>
+	<string name="copy_right1">Todos os direitos reservados</string>
+	<string name="app_ver">APL Versão 2.7</string>
+	<string name="main_drawer_select">Selecione a área do zoológico</string>
+	<string name="main_drawer_penguin">Penguin Hall</string>
+	<string name="main_drawer_bird">Bird Park</string>
+	<string name="main_drawer_NoBear">Museu Koala</string>
+	<string name="main_drawer_panda">Big Bear Museum</string>
+	<string name="main_drawer_childAnmals">Zona de animais para crianças</string>
+	<string name="main_drawer_desert">Zona de animais do deserto</string>
+	<string name="main_drawer_warmAnimals">Zona de animais temperados</string>
+	<string name="main_drawer_australia">Zona animal australiana</string>
+	<string name="main_drawer_afreca">Zona animal africana</string>
+	<string name="main_drawer_TaiwanAnimals">Zona Animal de Taiwan</string>
+	<string name="main_drawer_Asia">Área tropical da floresta tropical da Ásia</string>
+	<string name="main_drawer_insect">Museu de répteis anfíbios</string>
+	<string name="gender_askTicket">Boletim informativo</string>
+	<string name="gender_secure">Auxílio médico</string>
+	<string name="gender_trafic">Serviços de transporte</string>
+	<string name="gender_facility">Serviços de Instalações</string>
+	<string name="gender_eatStore">Serviço de catering</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[Zoo de Taipei] Eu acho que este é um bom aplicativo para recomendar a você, você pode ver muitas novidades de animais. \\ N ◎ ◎ Google Play Download grátis ◎ ◎ \n https://play.google.com/store</string>
+	<string name="stockFYI">apps / details? id = com.james.zoo</string>
+
+</resources>

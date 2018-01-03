@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">สวนสัตว์ไทเป</string>
+	<string name="taipeicity">สวนสัตว์ไทเป</string>
+	<string name="map">แผนที่</string>
+	<string name="video">หนัง</string>
+	<string name="voice">เสียงพูด</string>
+	<string name="thanks_notice">◎ให้การสรรเสริญในระดับ 5 ดาว \n ◎การดูแลสัตว์ด้วยกัน \n ◎ปัญหาข้อเสนอแนะแจ้งให้เราทราบ</string>
+	<string name="thanks_using">ขอบคุณสำหรับการใช้งานของคุณ</string>
+	<string name="good">สรรเสริญ</string>
+	<string name="already_good">ชื่นชมสวัสดีแล้ว</string>
+	<string name="not_notice">ไม่พร้อมท์อีกต่อไป</string>
+	<string name="navigation_drawer_open">เปิดลิ้นชักการนำทาง</string>
+	<string name="navigation_drawer_close">ปิดลิ้นชักการนำทาง</string>
+	<string name="action_service">สิ่งอำนวยความสะดวกบริการ</string>
+	<string name="action_settings">บน</string>
+	<string name="copy_right">สงวนลิขสิทธิ์© 2018 สวนสัตว์ไทเปโดย JamesC</string>
+	<string name="copy_right1">สงวนลิขสิทธิ์</string>
+	<string name="app_ver">APP เวอร์ชัน 2.7</string>
+	<string name="main_drawer_select">โปรดเลือกพื้นที่สวนสัตว์</string>
+	<string name="main_drawer_penguin">Penguin Hall</string>
+	<string name="main_drawer_bird">สวนนก</string>
+	<string name="main_drawer_NoBear">พิพิธภัณฑ์ Koala</string>
+	<string name="main_drawer_panda">พิพิธภัณฑ์ Big Bear</string>
+	<string name="main_drawer_childAnmals">เขตพื้นที่สำหรับเด็ก</string>
+	<string name="main_drawer_desert">เขตสัตว์ทะเลทราย</string>
+	<string name="main_drawer_warmAnimals">เขตสัตว์ในเมืองหนาว</string>
+	<string name="main_drawer_australia">Australian Animal Zone</string>
+	<string name="main_drawer_afreca">เขตสัตว์แอฟริกัน</string>
+	<string name="main_drawer_TaiwanAnimals">เขตสัตว์ไต้หวัน</string>
+	<string name="main_drawer_Asia">เขตป่าฝนเขตร้อนในเอเชีย</string>
+	<string name="main_drawer_insect">พิพิธภัณฑ์สัตว์เลื้อยคลานสะเทินน้ำสะเทินบก</string>
+	<string name="gender_askTicket">ตั๋วสายการบิน</string>
+	<string name="gender_secure">ความช่วยเหลือทางการแพทย์</string>
+	<string name="gender_trafic">บริการขนส่ง</string>
+	<string name="gender_facility">บริการสิ่งอำนวยความสะดวก</string>
+	<string name="gender_eatStore">บริการจัดเลี้ยง</string>
+	<string name="banner_ad_unit_id">CA-แอป-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[สวนสัตว์ไทเป] ฉันรู้สึกดี APP แนะนำนี้กับคุณคุณสามารถดูจำนวนมากของสัตว์ข่าวล่าสุดโอ้ \n ◎◎◎ฟรีดาวน์โหลดบน Google Play ◎◎◎ \n https://play.google.com/store</string>
+	<string name="stockFYI">apps / details? id = com.james.zoo</string>
+
+</resources>

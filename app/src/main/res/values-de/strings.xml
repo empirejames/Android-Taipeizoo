@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Taipeh Zoo</string>
+	<string name="taipeicity">Taipeh Zoo</string>
+	<string name="map">Karte</string>
+	<string name="video">Video</string>
+	<string name="voice">Stimme</string>
+	<string name="thanks_notice">◎ geben Sie ein 5-Sterne-Lob \n ◎ Tierpflege zusammen \n ◎ Feedback-Problem lassen Sie uns wissen</string>
+	<string name="thanks_using">Danke für Ihre Verwendung</string>
+	<string name="good">Wie</string>
+	<string name="already_good">Schon Lob Hallo</string>
+	<string name="not_notice">Keine Eingabeaufforderung mehr</string>
+	<string name="navigation_drawer_open">Öffnen Sie die Navigationsleiste</string>
+	<string name="navigation_drawer_close">Schließen Sie die Navigationsleiste</string>
+	<string name="action_service">Serviceeinrichtungen</string>
+	<string name="action_settings">Über</string>
+	<string name="copy_right">Copyright © 2018 Taipei Zoo von JamesC.</string>
+	<string name="copy_right1">Alle Rechte vorbehalten</string>
+	<string name="app_ver">APP Version 2.7</string>
+	<string name="main_drawer_select">Bitte wählen Sie den Zoobereich</string>
+	<string name="main_drawer_penguin">Pinguinhalle</string>
+	<string name="main_drawer_bird">Vogelpark</string>
+	<string name="main_drawer_NoBear">Koala-Museum</string>
+	<string name="main_drawer_panda">Big Bear Museum</string>
+	<string name="main_drawer_childAnmals">Kinder Tierzone</string>
+	<string name="main_drawer_desert">Wüste Tierzone</string>
+	<string name="main_drawer_warmAnimals">Gemäßigte Tierzone</string>
+	<string name="main_drawer_australia">Australische Tierzone</string>
+	<string name="main_drawer_afreca">Afrikanische Tierzone</string>
+	<string name="main_drawer_TaiwanAnimals">Taiwan Tierzone</string>
+	<string name="main_drawer_Asia">Asiatischer tropischer Regenwaldbereich</string>
+	<string name="main_drawer_insect">Amphibisches Reptilienmuseum</string>
+	<string name="gender_askTicket">Beratungs-Ticketing</string>
+	<string name="gender_secure">Medizinische Hilfe</string>
+	<string name="gender_trafic">Transportdienstleistungen</string>
+	<string name="gender_facility">Ausstattung Dienstleistungen</string>
+	<string name="gender_eatStore">Catering-Service</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[Zoo von Taipeh] Ich denke, das ist eine gute App, um Sie zu empfehlen, können Sie viele Tiernachrichten sehen. \\ N ◎ ◎ Google Play Kostenloser Download ◎ ◎ \n https://play.google.com/store</string>
+	<string name="stockFYI">Apps / Details? id = com.james.zoo</string>
+
+</resources>

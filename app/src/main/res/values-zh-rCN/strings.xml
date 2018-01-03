@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">台北动物园</string>
+	<string name="taipeicity">台北市动物园</string>
+	<string name="map">地图</string>
+	<string name="video">影片</string>
+	<string name="voice">语音</string>
+	<string name="thanks_notice">◎给个 5 星好评\\n◎一同爱护动物\\n◎可回馈问题让我们知道</string>
+	<string name="thanks_using">感恩您的使用</string>
+	<string name="good">赞</string>
+	<string name="already_good">已经赞啰</string>
+	<string name="not_notice">不再提示</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="action_service">服务设施</string>
+	<string name="action_settings">关于</string>
+	<string name="copy_right">Copyright © 2018 Taipei Zoo by JamesC.</string>
+	<string name="copy_right1">All rights reserved</string>
+	<string name="app_ver">APP Version 2.7</string>
+	<string name="main_drawer_select">请选择动物园区</string>
+	<string name="main_drawer_penguin">企鹅馆</string>
+	<string name="main_drawer_bird">鸟园区</string>
+	<string name="main_drawer_NoBear">无尾熊馆</string>
+	<string name="main_drawer_panda">大猫熊馆</string>
+	<string name="main_drawer_childAnmals">儿童动物区</string>
+	<string name="main_drawer_desert">沙漠动物区</string>
+	<string name="main_drawer_warmAnimals">温带动物区</string>
+	<string name="main_drawer_australia">澳洲动物区</string>
+	<string name="main_drawer_afreca">非洲动物区</string>
+	<string name="main_drawer_TaiwanAnimals">台湾动物区</string>
+	<string name="main_drawer_Asia">亚洲热带雨林区</string>
+	<string name="main_drawer_insect">两栖爬虫动物馆</string>
+	<string name="gender_askTicket">咨询售票</string>
+	<string name="gender_secure">医疗救护</string>
+	<string name="gender_trafic">交通服务</string>
+	<string name="gender_facility">设施服务</string>
+	<string name="gender_eatStore">餐饮服务</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">【台北动物园】这款我觉得好用APP推荐给您，可以看到很多动物最新讯息喔\\n◎◎◎上Google Play免费下载◎◎◎\\n https://play.google.com/store</string>
+	<string name="stockFYI">apps/details?id=com.james.zoo</string>
+
+</resources>

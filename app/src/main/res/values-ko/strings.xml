@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">타이페이 동물원</string>
+	<string name="taipeicity">타이페이 동물원</string>
+	<string name="map">지도</string>
+	<string name="video">비디오</string>
+	<string name="voice">음성</string>
+	<string name="thanks_notice">◎ 5 성급 칭찬을 제공 ◎ \n ◎ 동물 관리 함께 \n ◎ 피드백 문제는 저희에게 알려주십시오</string>
+	<string name="thanks_using">사용 해줘서 고마워.</string>
+	<string name="good">좋아요.</string>
+	<string name="already_good">이미 Hello를 칭찬하다.</string>
+	<string name="not_notice">더 이상 프롬프트되지 않습니다.</string>
+	<string name="navigation_drawer_open">탐색 창 열기</string>
+	<string name="navigation_drawer_close">탐색 창 닫기</string>
+	<string name="action_service">서비스 시설</string>
+	<string name="action_settings">정보</string>
+	<string name="copy_right">JamesC의 저작권 © 2018 Taipei Zoo.</string>
+	<string name="copy_right1">판권 소유</string>
+	<string name="app_ver">APP 버전 2.7</string>
+	<string name="main_drawer_select">동물원 지역을 선택하십시오.</string>
+	<string name="main_drawer_penguin">펭귄 홀</string>
+	<string name="main_drawer_bird">버드 파크</string>
+	<string name="main_drawer_NoBear">코알라 박물관</string>
+	<string name="main_drawer_panda">빅 베어 박물관</string>
+	<string name="main_drawer_childAnmals">어린이 동물 구역</string>
+	<string name="main_drawer_desert">사막 동물 지역</string>
+	<string name="main_drawer_warmAnimals">온화한 동물 지역</string>
+	<string name="main_drawer_australia">호주 동물 지역</string>
+	<string name="main_drawer_afreca">아프리카 동물 지역</string>
+	<string name="main_drawer_TaiwanAnimals">대만 동물 보호 구역</string>
+	<string name="main_drawer_Asia">아시아 열대 우림 지역</string>
+	<string name="main_drawer_insect">수륙 양용 파충류 박물관</string>
+	<string name="gender_askTicket">자문 발권</string>
+	<string name="gender_secure">의료 보조</string>
+	<string name="gender_trafic">교통 서비스</string>
+	<string name="gender_facility">시설 서비스</string>
+	<string name="gender_eatStore">캐터링 서비스</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970 / 5937793715</string>
+	<string name="share_content">[타이페이 동물원] 나는 당신이 많은 동물에게 구글 플레이 ◎◎◎ \n https://play.google.com/store/에 대한 최신 뉴스 오 \n ◎◎◎ 무료 다운로드를 볼 수있는 좋은 APP 당신이 추천 느</string>
+	<string name="stockFYI">apps / details? id = com.james.zoo</string>
+
+</resources>

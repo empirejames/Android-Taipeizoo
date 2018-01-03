@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">台北動物園</string>
+	<string name="taipeicity">台北動物園</string>
+	<string name="map">地図</string>
+	<string name="video">ビデオ</string>
+	<string name="voice">声</string>
+	<string name="thanks_notice">◎5つの賞賛を与える◎\n◎動物のケア\n◎フィードバックの問題は私たちに知らせる</string>
+	<string name="thanks_using">あなたの使用に感謝します</string>
+	<string name="good">好き</string>
+	<string name="already_good">すでにHelloを賞賛しています</string>
+	<string name="not_notice">プロンプトが表示されない</string>
+	<string name="navigation_drawer_open">ナビゲーション・ドロワーを開く</string>
+	<string name="navigation_drawer_close">ナビゲーション・ドロワーを閉じる</string>
+	<string name="action_service">サービス施設</string>
+	<string name="action_settings">〜について</string>
+	<string name="copy_right">JamesCの著作権©2018 Taipei Zoo</string>
+	<string name="copy_right1">すべての権利を保有</string>
+	<string name="app_ver">APPバージョン2.7</string>
+	<string name="main_drawer_select">動物園のエリアを選択してください</string>
+	<string name="main_drawer_penguin">ペンギンホール</string>
+	<string name="main_drawer_bird">バードパーク</string>
+	<string name="main_drawer_NoBear">コアラ博物館</string>
+	<string name="main_drawer_panda">ビッグベアー博物館</string>
+	<string name="main_drawer_childAnmals">子供の遊び場</string>
+	<string name="main_drawer_desert">砂漠動物園</string>
+	<string name="main_drawer_warmAnimals">温帯動物ゾーン</string>
+	<string name="main_drawer_australia">オーストラリア動物園</string>
+	<string name="main_drawer_afreca">アフリカの動物のゾーン</string>
+	<string name="main_drawer_TaiwanAnimals">台湾動物園</string>
+	<string name="main_drawer_Asia">アジア熱帯雨林地域</string>
+	<string name="main_drawer_insect">水陸両用爬虫類博物館</string>
+	<string name="gender_askTicket">アドバイザリーチケット</string>
+	<string name="gender_secure">医療援助</string>
+	<string name="gender_trafic">交通サービス</string>
+	<string name="gender_facility">施設サービス</string>
+	<string name="gender_eatStore">ケータリングサービス</string>
+	<string name="banner_ad_unit_id">ca-app-pub-1659435325076970/5937793715</string>
+	<string name="share_content">[台北動物園]私は良いAPPは、あなたがGoogleで最新のニュースああ\nは◎◎◎無料ダウンロードは、\nはhttps://play.google.com/store/◎◎◎再生する動物の多くを見ることができ、あなたにこれをお勧め感じ</string>
+	<string name="stockFYI">apps / details？id = com.james.zoo</string>
+
+</resources>

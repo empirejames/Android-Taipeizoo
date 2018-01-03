@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="請選擇動物園區">
+    <item android:title="@string/main_drawer_select">
         <menu>
             <item
                 android:id="@+id/nav_penguin"
                 android:icon="@drawable/pangu"
-                android:title="企鵝館" />
+                android:title="@string/main_drawer_penguin" />
             <item
                 android:id="@+id/nav_bird"
                 android:icon="@drawable/bird"
-                android:title="鳥園區" />
+                android:title="@string/main_drawer_bird" />
             <item
                 android:id="@+id/nav_NoBear"
                 android:icon="@drawable/notail"
-                android:title="無尾熊館" />
+                android:title="@string/main_drawer_NoBear" />
             <item
                 android:id="@+id/nav_panda"
                 android:icon="@drawable/catbear"
-                android:title="大貓熊館" />
+                android:title="@string/main_drawer_panda" />
             <item
                 android:id="@+id/nav_childAnmals"
                 android:icon="@drawable/rabit"
-                android:title="兒童動物區" />
+                android:title="@string/main_drawer_childAnmals" />
             <item
                 android:id="@+id/nav_desert"
                 android:icon="@drawable/samo"
-                android:title="沙漠動物區" />
+                android:title="@string/main_drawer_desert" />
             <item
                 android:id="@+id/nav_warmAnimals"
                 android:icon="@drawable/warm"
-                android:title="溫帶動物區" />
+                android:title="@string/main_drawer_warmAnimals" />
             <item
                 android:id="@+id/nav_australia"
                 android:icon="@drawable/ouchu"
-                android:title="澳洲動物區" />
+                android:title="@string/main_drawer_australia" />
             <item
                 android:id="@+id/nav_afreca"
                 android:icon="@drawable/fachu"
-                android:title="非洲動物區" />
+                android:title="@string/main_drawer_afreca" />
             <item
                 android:id="@+id/nav_TaiwanAnimals"
                 android:icon="@drawable/taiwan"
-                android:title="台灣動物區" />
+                android:title="@string/main_drawer_TaiwanAnimals" />
             <item
                 android:id="@+id/nav_Asia"
                 android:icon="@drawable/hot"
-                android:title="亞洲熱帶雨林區" />
+                android:title="@string/main_drawer_Asia" />
             <item
                 android:id="@+id/nav_insect"
                 android:icon="@drawable/lungci"
-                android:title="兩棲爬蟲動物館" />
+                android:title="@string/main_drawer_insect" />
         </menu>
     </item>
 
