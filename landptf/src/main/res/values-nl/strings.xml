@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Landptf</string>
+	<string name="button_extend_m_default_text">tekst</string>
+	<string name="dialog_m_title">prompt</string>
+	<string name="dialog_m_sure">bepalen</string>
+	<string name="count_down_m_recapture_after">Seconden kunnen opnieuw worden verzonden</string>
+	<string name="count_down_m_recapture">Haal de verificatiecode opnieuw op</string>
+
+</resources>

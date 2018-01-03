@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Landtf</string>
+	<string name="button_extend_m_default_text">Text</string>
+	<string name="dialog_m_title">Aufforderung</string>
+	<string name="dialog_m_sure">OK</string>
+	<string name="count_down_m_recapture_after">Sekunden können erneut gesendet werden</string>
+	<string name="count_down_m_recapture">Rufen Sie den Bestätigungscode erneut ab</string>
+
+</resources>

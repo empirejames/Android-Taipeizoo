@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Landptf</string>
+	<string name="button_extend_m_default_text">텍스트</string>
+	<string name="dialog_m_title">프롬프트</string>
+	<string name="dialog_m_sure">확인</string>
+	<string name="count_down_m_recapture_after">초를 다시 보낼 수 있음</string>
+	<string name="count_down_m_recapture">인증 코드 다시 검색</string>
+
+</resources>

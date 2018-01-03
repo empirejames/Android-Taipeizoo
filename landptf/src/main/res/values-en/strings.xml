@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Landptf</string>
+	<string name="button_extend_m_default_text">text</string>
+	<string name="dialog_m_title">prompt</string>
+	<string name="dialog_m_sure">determine</string>
+	<string name="count_down_m_recapture_after">Seconds can be re-sent</string>
+	<string name="count_down_m_recapture">Retrieve the verification code again</string>
+
+</resources>

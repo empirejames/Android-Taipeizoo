@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Landptf</string>
+	<string name="button_extend_m_default_text">ข้อความ</string>
+	<string name="dialog_m_title">รวดเร็ว</string>
+	<string name="dialog_m_sure">กำหนด</string>
+	<string name="count_down_m_recapture_after">วินาทีสามารถส่งใหม่ได้</string>
+	<string name="count_down_m_recapture">เรียกรหัสยืนยันอีกครั้ง</string>
+
+</resources>

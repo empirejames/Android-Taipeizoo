@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Landptf</string>
+	<string name="button_extend_m_default_text">văn bản</string>
+	<string name="dialog_m_title">Nhắc nhở</string>
+	<string name="dialog_m_sure">OK</string>
+	<string name="count_down_m_recapture_after">Giây có thể được gửi lại</string>
+	<string name="count_down_m_recapture">Truy lục mã xác minh một lần nữa</string>
+
+</resources>
