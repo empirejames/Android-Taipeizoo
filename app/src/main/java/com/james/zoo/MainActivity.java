@@ -405,8 +405,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Collections.sort(equip, new Comparator<EquipmentItem>() {
             @Override
             public int compare(EquipmentItem equip1, EquipmentItem equip2) {
-                double a = Double.parseDouble(equip1.getS_geo());
-                double b = Double.parseDouble(equip2.getS_geo());
+                double a ,b;
+                if(equip1.getS_geo().contains(",")){
+                     a = Double.parseDouble(equip1.getS_geo().replace(",","."));
+                }
+                a = Double.parseDouble(equip1.getS_geo());
+                b = Double.parseDouble(equip2.getS_geo());
                 //Log.e(TAG,a + " V.S " + b);
                 return a < b ? -1 : 1;
             }
@@ -528,7 +532,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String result = ""; //MULTIPOINT ((121.5831587 24.9971109))
         String gps[];
         String temp[];
-        result = Geo.substring(Geo.indexOf("(") + 2, Geo.indexOf(")") - 1);
+        if(Geo.contains("(")){
+            Log.e(TAG,"GEO : " + Geo.substring(Geo.indexOf("(") + 2, Geo.indexOf(")") - 1));
+            result = Geo.substring(Geo.indexOf("(") + 2, Geo.indexOf(")") - 1);
+        }else{
+            result ="0.00000 0.00000";
+        }
         temp = result.split(" ");
         gps = temp;
         //gps = temp[1] + ","+temp[0];
