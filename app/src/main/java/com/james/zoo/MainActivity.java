@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,6 +41,7 @@ import android.widget.Toast;
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
+import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -90,13 +92,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (alreadyGj.equals("")) {
             alreadyGj = "true";
         }
-        new AppUpdater(this)
-                .setUpdateFrom(UpdateFrom.GOOGLE_PLAY)
-                .setDisplay(Display.DIALOG)
-                .showAppUpdated(false)  // 若已是最新版本, 則 true: 仍會提示之, false: 不會提示之
-                .start();
+        VersionChecker versionChecker = new VersionChecker();
+        try{
+            String latestVersion = versionChecker.execute("com.james.zoo").get();
+            Log.e(TAG,getVersion() + " :  " +  latestVersion);
+            if(getVersion()!=null && !getVersion().equals(latestVersion)){
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Google play 有新版本，是否前往更新?")
+                        .setTitle("臺北動物園")
+                        .setCancelable(false)
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intentDL = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.james.zoo"));
+                                startActivity(intentDL);
+
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+            Log.e(TAG,"latestVersion : " + latestVersion);
+        }catch(Exception e){
+
+        }
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("F618803C89E1614E3394A55D5E7A756B").build(); //Nexus 5
+
+        Bundle extras = new Bundle();
+        extras.putString("max_ad_content_rating","G");
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("F618803C89E1614E3394A55D5E7A756B")
+                .addNetworkExtrasBundle(AdMobAdapter.class,extras)
+                .build(); //Nexus 5
         mAdView.loadAd(adRequest);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -411,7 +441,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 a = Double.parseDouble(equip1.getS_geo());
                 b = Double.parseDouble(equip2.getS_geo());
-                //Log.e(TAG,a + " V.S " + b);
+                Log.e(TAG,a + " V.S " + b);
                 return a < b ? -1 : 1;
             }
         });
@@ -471,7 +501,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "無法定位座標", Toast.LENGTH_LONG).show();
         }
     }
+    private String getVersion(){
+        String localVersion = "";
+        try{
+            PackageInfo packageInfo = getApplicationContext().getApplicationContext()
+                    .getPackageManager()
+                    .getPackageInfo(getPackageName(), 0);
+            localVersion = packageInfo.versionName+"";
+        }catch (Exception e){
 
+        }
+        return localVersion;
+    }
     public double Distance(double longitude1, double latitude1, double longitude2, double latitude2) {
         //Log.e(TAG, longitude1 + "." + latitude1 + " V.S. " + longitude2 + "." + latitude2);
         double radLatitude1 = latitude1 * Math.PI / 180;
